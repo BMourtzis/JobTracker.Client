@@ -1,7 +1,7 @@
 // Dependencies
 
 const state = {
-  
+
 };
 
 const getters = {

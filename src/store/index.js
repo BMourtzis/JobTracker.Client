@@ -3,7 +3,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 // Modules
-import application from "./modules/application.js"
+import application from "./modules/application";
+import settings from "./modules/settings"
 
 // Other
 
@@ -14,7 +15,8 @@ const debug = process.env.NODE_ENV !== 'production';
 
 export default new Vuex.Store({
   modules: {
-    application
+    application,
+    settings
   },
   strict: debug
 });
