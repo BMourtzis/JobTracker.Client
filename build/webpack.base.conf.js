@@ -64,7 +64,14 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
+      //I need to fix the global sass loader
+      // {
+      //   loader: 'sass-resources-loader',
+      //   options: {
+      //     resources: resolve('src/styles/_variables.scss')
+      //   }
+      // }
     ]
   },
   node: {
