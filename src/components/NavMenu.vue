@@ -1,13 +1,7 @@
 <template>
 <v-navigation-drawer app>
-  <v-toolbar flat>
-    <v-list>
-      <v-list-tile>
-        <v-list-tile-title class="title">
-          Job Tracker
-        </v-list-tile-title>
-      </v-list-tile>
-    </v-list>
+  <v-toolbar flat dark color="secondary">
+    <v-toolbar-title>Job Tracker</v-toolbar-title>
   </v-toolbar>
   <v-list>
     <v-list-tile v-for="(item, index) in list" :key="index" @click="itemClick(index, item.title, item.path)">

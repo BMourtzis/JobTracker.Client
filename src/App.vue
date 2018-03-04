@@ -5,8 +5,9 @@
     <v-navigation-drawer app right>
       <router-view name="sidebar" />
     </v-navigation-drawer>
-    <v-toolbar app>
-      <h1>{{title}}</h1>
+    <v-toolbar app dark color="primary">
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid>
