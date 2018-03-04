@@ -1,29 +1,35 @@
 <template>
 <div id="app">
   <v-app>
-    <v-navigation-drawer app>
-      <DrawerList/>
-    </v-navigation-drawer>
+    <nav-menu/>
     <v-navigation-drawer app right>
-      <router-view name="sidebar"/>
+      <router-view name="sidebar" />
     </v-navigation-drawer>
+    <v-toolbar app>
+      <h1>{{title}}</h1>
+    </v-toolbar>
     <v-content>
       <v-container fluid>
         <router-view name="main" />
       </v-container>
     </v-content>
-    <v-footer app></v-footer>
+    <v-footer app>Footer</v-footer>
   </v-app>
 </div>
 </template>
 
 <script>
-import DrawerList from './components/DrawerList';
+import NavMenu from './components/NavMenu';
 
 export default {
   name: 'App',
   components: {
-    DrawerList
+    NavMenu
+  },
+  computed: {
+    title() {
+      return this.$store.state.app.page.title; 
+    }
   }
 }
 </script>
