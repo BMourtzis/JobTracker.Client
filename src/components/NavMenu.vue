@@ -30,8 +30,8 @@ export default {
     }
   },
   methods: {
-    itemClick(index, title, path) {
-      this.$store.dispatch("changePage",{index, title});
+    itemClick(index, path) {
+      this.$store.dispatch("changePage", index);
       this.$router.push(path);
     }
   }

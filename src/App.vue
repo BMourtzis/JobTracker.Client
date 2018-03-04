@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     title() {
-      return navigationList[this.$store.state.app.page].title;
+      return navigationList[this.$store.state.app.main].title;
     }
   }
 }

@@ -1,7 +1,7 @@
 // Dependencies
 
 const state = {
-  page: 0
+  main: 0
 };
 
 const getters = {
@@ -9,14 +9,14 @@ const getters = {
 };
 
 const actions = {
-  changePage(context, page) {
-    context.commit("changePage", page.index);
+  changePage(context, index) {
+    context.commit("changePage", index);
   }
 };
 
 const mutations = {
   changePage(state, n) {
-    state.page = n;
+    state.main = n;
   }
 };
 
