@@ -1,10 +1,7 @@
 // Dependencies
 
 const state = {
-  page: {
-    selected: 0,
-    title: "Home"
-  }
+  page: 0
 };
 
 const getters = {
@@ -12,18 +9,14 @@ const getters = {
 };
 
 const actions = {
-  selectPage(context, page) {
-    context.commit("changeIndex", page.index);
-    context.commit("changeTitle", page.title);
+  changePage(context, page) {
+    context.commit("changePage", page.index);
   }
 };
 
 const mutations = {
-  changeIndex(state, n) {
-    state.page.selected = n;
-  },
-  changeTitle(state, title) {
-    state.page.title = title;
+  changePage(state, n) {
+    state.page = n;
   }
 };
 

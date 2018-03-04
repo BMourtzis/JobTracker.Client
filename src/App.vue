@@ -20,6 +20,7 @@
 
 <script>
 import NavMenu from './components/NavMenu';
+import { navigationList } from './constants/navigation';
 
 export default {
   name: 'App',
@@ -28,7 +29,7 @@ export default {
   },
   computed: {
     title() {
-      return this.$store.state.app.page.title; 
+      return navigationList[this.$store.state.app.page].title;
     }
   }
 }

@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     itemClick(index, title, path) {
-      this.$store.dispatch("selectPage",{index, title});
+      this.$store.dispatch("changePage",{index, title});
       this.$router.push(path);
     }
   }
