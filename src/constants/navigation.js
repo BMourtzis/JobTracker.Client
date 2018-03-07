@@ -11,9 +11,9 @@ export const navigationList = [
     path: "/job"
   },
   {
-    title: "Services",
+    title: "Job Templates",
     icon: "inbox",
-    path: "/service"
+    path: "/templates"
   },
   {
     title: "Clients",

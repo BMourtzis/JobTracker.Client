@@ -1,6 +1,6 @@
 import Home from '@/components/main/Home';
 import Job from '@/components/main/Job';
-import Service from '@/components/main/Service';
+import Template from '@/components/main/Template';
 import Client from '@/components/main/Client';
 import Invoice from '@/components/main/Invoice';
 import Calendar from '@/components/main/Calendar';
@@ -23,10 +23,10 @@ export default [
     }
   },
   {
-    path: '/service',
-    name: 'Service',
+    path: '/templates',
+    name: 'Template',
     components: {
-      main: Service
+      main: Template
     }
   },
   {

@@ -4,7 +4,7 @@
     <v-toolbar-title>Job Tracker</v-toolbar-title>
   </v-toolbar>
   <v-list>
-    <v-list-tile v-for="(item, index) in list" :key="index" @click="itemClick(index, item.title, item.path)">
+    <v-list-tile v-for="(item, index) in list" :key="index" @click="itemClick(index, item.path)">
       <v-list-tile-avatar>
         <v-icon>{{ item.icon }}</v-icon>
       </v-list-tile-avatar>
