@@ -2,19 +2,16 @@
 <div id="app">
   <v-app>
     <nav-menu/>
-    <v-navigation-drawer app right>
-      <router-view name="sidebar" />
-    </v-navigation-drawer>
     <v-toolbar app dark color="primary">
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid>
-        <router-view name="main" />
+        <router-view />
       </v-container>
     </v-content>
-    <v-footer app>Footer</v-footer>
+    <!-- <v-footer app>Footer</v-footer> -->
   </v-app>
 </div>
 </template>

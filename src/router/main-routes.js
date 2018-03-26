@@ -1,7 +1,6 @@
 import Home from '@/components/main/Home';
 import Job from '@/components/main/Job';
 import Template from '@/components/main/Template';
-import Client from '@/components/main/Client';
 import Invoice from '@/components/main/Invoice';
 import Calendar from '@/components/main/Calendar';
 import Finances from '@/components/main/Finances';
@@ -11,57 +10,36 @@ export default [
   {
     path: '/',
     name: 'Home',
-    components: {
-      main: Home
-    }
+    component: Home
   },
   {
     path: '/job',
     name: 'Job',
-    components: {
-      main: Job
-    }
+    component: Job
   },
   {
     path: '/templates',
     name: 'Template',
-    components: {
-      main: Template
-    }
-  },
-  {
-    path: '/client',
-    name: 'Client',
-    components: {
-      main: Client
-    }
+    component: Template
   },
   {
     path: '/invoice',
     name: 'Invoice',
-    components: {
-      main: Invoice
-    }
+    component: Invoice
   },
   {
     path: '/calendar',
     name: 'Calendar',
-    components: {
-      main: Calendar
-    }
+    component: Calendar
   },
   {
     path: '/finances',
     name: 'Finances',
-    components: {
-      main: Finances
-    }
+    component: Finances
   },
   {
     path: '/settings',
     name: 'Settings',
-    components: {
-      main: Settings
-    }
+    component: Settings
   }
 ];

@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
+import VueResource from 'vue-resource';
 import Vuetify from 'vuetify';
 import router from './router';
 import store from './store';
@@ -28,5 +29,8 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  http: {
+    root: "localhost:54043"
+  }
 });
