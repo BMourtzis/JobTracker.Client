@@ -6,7 +6,7 @@
       <template slot="items" slot-scope="props">
           <td>{{ props.item.buisnessName }}</td>
           <td class="justify-center layout px-0">
-            <v-btn icon class="mx-0" >
+            <v-btn icon class="mx-0">
               <v-icon color="teal">edit</v-icon>
             </v-btn>
             <v-btn icon class="mx-0">
@@ -25,17 +25,31 @@
 </template>
 
 <script>
+import { mainHeaders } from '../../constants/client';
+
 export default {
   name: "client-main",
   data() {
     return {
-      headers: [{
-        text: "Buisness Name",
-        value: "businessName"
-      }],
-      items: [],
+      headers: mainHeaders,
       loading: true
     }
+  },
+  computed: {
+    items() {
+      return this.$store.state.clients.clientList;
+    }
+  },
+  methods: {
+    getClients() {
+      var clientCall = this.$store.dispatch("loadClients");
+      clientCall.then(() => {
+        this.loading = false;
+      })
+    }
+  },
+  created: function() {
+    this.getClients();
   }
 }
 </script>

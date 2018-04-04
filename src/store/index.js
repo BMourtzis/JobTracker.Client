@@ -5,6 +5,7 @@ import Vuex from "vuex";
 // Modules
 import app from "./modules/application";
 import settings from "./modules/settings"
+import clients from "./modules/clients"
 
 // Other
 
@@ -16,7 +17,8 @@ const debug = process.env.NODE_ENV !== 'production';
 export default new Vuex.Store({
   modules: {
     app,
-    settings
+    settings,
+    clients
   },
   strict: debug
 });
