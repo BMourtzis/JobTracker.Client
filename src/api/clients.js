@@ -6,6 +6,11 @@ function getClients() {
   return caller.get(controllerName);
 }
 
+function newClient(client) {
+  return caller.post(controllerName+"/create", client);
+}
+
 export {
-  getClients
+  getClients,
+  newClient
 }

@@ -28,8 +28,5 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>',
-  http: {
-    root: "localhost:54043"
-  }
+  template: '<App/>'
 });

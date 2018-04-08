@@ -1,4 +1,4 @@
-import { getClients } from '../../api/clients';
+import { getClients, newClient } from '../../api/clients';
 
 const state = {
   lastFetchTimestamp: 0,
@@ -11,12 +11,18 @@ const getters = {
 
 const actions = {
   loadClients(context) {
-    var clientCall = getClients();
-    clientCall.then((data) => {
+    var clientCall = getClients().then((data) => {
       context.commit("updateClients", data);
       context.commit("updateTimestamp");
     });
     return clientCall;
+  },
+  addClient(context, client) {
+    var clientCall = newClient(client).then(
+      (data) => {
+        context.commit("newClient", data);
+      });
+      return clientCall;
   }
 }
 
@@ -26,6 +32,9 @@ const mutations = {
   },
   updateTimestamp(state) {
     state.lastFetchTimestamp = Date.now();
+  },
+  newClient(state, client) {
+    state.clientList.push(client);
   }
 }
 
