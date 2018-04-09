@@ -36,12 +36,13 @@
               <v-flex xs12 sm6 md6>
                 <v-text-field v-model="client.primaryPhone" label="Primary Phone" :mask="'phone'"></v-text-field>
               </v-flex>
+              <!-- Additional Phones -->
               <template v-for="(contact, index) in client.contacts">
                   <v-flex xs12 sm6 md4>
-                    <v-text-field v-model="contact.name" label="Contact Name"></v-text-field>
+                    <v-text-field v-model="contact.name" label="Contact Name" :rules="[rules.required]" required></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm6 md5>
-                    <v-text-field v-model="contact.phone" label="Phone" :mask="'phone'"></v-text-field>
+                    <v-text-field v-model="contact.phone" label="Phone" :mask="'phone'" :rules="[rules.required]" required></v-text-field>
                   </v-flex>
                   <v-flex><v-btn color="red darken-1" flat @click.native="removeContact(index)"><v-icon>clear</v-icon></v-btn></v-flex>
                 </template>
@@ -55,7 +56,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="red darken-1" flat @click.native="close">Cancel</v-btn>
+        <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
         <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
       </v-card-actions>
     </v-card>
@@ -66,10 +67,7 @@
 
 <script>
 import loader from "../shared/loader";
-import {
-  requiredRule,
-  emailRule
-} from "../../constants/rules";
+import { requiredRule, emailRule } from "../../constants/rules";
 
 export default {
   name: "client-add",
@@ -128,11 +126,11 @@ export default {
         );
       }
     },
-    close() {
-      this.$refs.form.reset();
+    cancel() {
       this.dialog = false;
       setTimeout(() => {
         this.emptyForm();
+        this.$refs.form.reset();
       }, 300);
     },
     emptyForm() {

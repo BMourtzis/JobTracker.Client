@@ -46,9 +46,14 @@ export default {
   },
   methods: {
     getClients() {
-      this.$store.dispatch("loadClients").then(() => {
-        this.loading = false;
-      })
+      this.$store.dispatch("loadClients").then(
+        () => {
+          this.loading = false;
+        },
+        (err) => {
+          this.loading = false;
+          console.log(err);
+        });
     }
   },
   created: function() {
