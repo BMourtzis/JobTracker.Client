@@ -17,7 +17,7 @@
                 <v-text-field v-model="client.businessName" label="Business Name" :rules="[rules.required]" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md3>
-                <v-text-field v-model="client.prefixName" counter="4" mask="AAAA" label="Invoice Prefix" :rules="[rules.required]" required></v-text-field>
+                <v-text-field v-model="client.invoicePrefix" counter="4" mask="AAAA" label="Invoice Prefix" :rules="[rules.required]" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm12 md12>
                 <v-text-field v-model="client.address" label="Address" :rules="[rules.required]" required></v-text-field>
@@ -25,10 +25,10 @@
               <v-spacer></v-spacer>
               <v-flex xs12 sm12 md12><span class="subheading">Contant Details</span></v-flex>
               <v-flex xs12 sm6 md6>
-                <v-text-field v-model="client.firstName" label="First Name" :rules="[rules.required]" required></v-text-field>
+                <v-text-field v-model="client.firstname" label="First Name" :rules="[rules.required]" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md6>
-                <v-text-field v-model="client.lastName" label="Last Name" :rules="[rules.required]" required></v-text-field>
+                <v-text-field v-model="client.lastname" label="Last Name" :rules="[rules.required]" required></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md6>
                 <v-text-field v-model="client.email" label="Email" type="email" :rules="[rules.required, rules.email]" required></v-text-field>
@@ -85,10 +85,10 @@ export default {
       loading: false,
       client: {
         businessName: "",
-        prefixName: "",
+        invoicePrefix: "",
         address: "",
-        firstName: "",
-        lastName: "",
+        firstname: "",
+        lastname: "",
         email: "",
         primaryPhone: "",
         contacts: []
@@ -130,18 +130,18 @@ export default {
       this.dialog = false;
       setTimeout(() => {
         this.emptyForm();
-        this.$refs.form.reset();
       }, 300);
     },
     emptyForm() {
       this.client.businessName = "";
-      this.client.prefixName = "";
+      this.client.invoicePrefix = "";
       this.client.address = "";
-      this.client.firstName = "";
-      this.client.lastName = "";
+      this.client.firstname = "";
+      this.client.lastname = "";
       this.client.email = "";
       this.client.primaryPhone = "";
       this.client.contacts = [];
+      this.$refs.form.reset();
     }
   }
 }

@@ -5,8 +5,6 @@ function getCaller() {
     baseURL: 'http://localhost:54043'
   });
 
-  // caller.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-
   return caller;
 }
 

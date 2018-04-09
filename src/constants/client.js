@@ -9,7 +9,11 @@ export const mainHeaders = [
     value: "fullname"
   },
   {
-    text: "Short Name",
-    value: "shortName"
+    text: "Invoice Prefix",
+    value: "invoicePrefix"
+  },
+  {
+    text: "Actions",
+    value: "actions"
   }
 ]

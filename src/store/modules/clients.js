@@ -12,7 +12,7 @@ const getters = {
 const actions = {
   loadClients(context) {
     var clientCall = getClients().then((data) => {
-      context.commit("updateClients", data);
+      context.commit("updateClients", data.data);
       context.commit("updateTimestamp");
     });
     return clientCall;
@@ -20,7 +20,7 @@ const actions = {
   addClient(context, client) {
     var clientCall = newClient(client).then(
       (data) => {
-        context.commit("newClient", data);
+        context.commit("newClient", data.data);
       });
       return clientCall;
   }
@@ -28,7 +28,8 @@ const actions = {
 
 const mutations = {
   updateClients(state,clients) {
-    state.clientList = clients;
+    state.clientList = [];
+    state.clientList.push(...clients);
   },
   updateTimestamp(state) {
     state.lastFetchTimestamp = Date.now();

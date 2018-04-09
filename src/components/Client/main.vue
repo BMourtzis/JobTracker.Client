@@ -4,7 +4,9 @@
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
       <template slot="items" slot-scope="props">
-        <td>{{ props.item.buisnessName }}</td>
+        <td>{{ props.item.businessName }}</td>
+        <td>{{ props.item.fullName }}</td>
+        <td>{{ props.item.invoicePrefix }}</td>
         <td class="justify-center layout px-0">
           <v-btn icon class="mx-0">
             <v-icon color="teal">edit</v-icon>
@@ -52,7 +54,6 @@ export default {
         },
         (err) => {
           this.loading = false;
-          console.log(err);
         });
     }
   },
