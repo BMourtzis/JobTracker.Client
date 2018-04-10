@@ -13,17 +13,21 @@
     </v-content>
     <!-- <v-footer app>Footer</v-footer> -->
   </v-app>
+  <loader></loader>
 </div>
 </template>
 
 <script>
 import NavMenu from './components/NavMenu';
+import loader from './components/shared/loader';
 import { navigationList } from './constants/navigation';
+
 
 export default {
   name: 'App',
   components: {
-    NavMenu
+    NavMenu,
+    "loader": loader
   },
   computed: {
     title() {

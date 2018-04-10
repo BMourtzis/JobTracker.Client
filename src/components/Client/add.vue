@@ -61,7 +61,6 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
-  <loader :loading="loading"></loader>
 </div>
 </template>
 
@@ -71,9 +70,6 @@ import { requiredRule, emailRule } from "../../constants/rules";
 
 export default {
   name: "client-add",
-  components: {
-    loader: loader
-  },
   data() {
     return {
       valid: true,
@@ -82,7 +78,6 @@ export default {
         email: emailRule
       },
       dialog: false,
-      loading: false,
       client: {
         businessName: "",
         invoicePrefix: "",
@@ -111,19 +106,19 @@ export default {
         let newClient = {};
         Object.assign(newClient, this.client);
 
-        this.loading = true;
+        this.$store.dispatch("enableLoading", "Loading...");
         this.$store.dispatch("addClient", newClient).then(
           () => {
-            this.loading = false;
             setTimeout(() => {
               this.emptyForm();
             }, 300);
           },
           (err) => {
-            this.loading = false;
             this.dialog = true;
           }
-        );
+        ).finally(() => {
+          this.$store.dispatch("disableLoading");
+        });
       }
     },
     cancel() {
