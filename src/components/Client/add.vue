@@ -1,5 +1,4 @@
 <template>
-<div>
   <v-dialog v-model="dialog" max-width="50vw">
     <v-btn color="primary" slot="activator" class="mb-2 left">
       <v-icon>add</v-icon>
@@ -61,7 +60,6 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
-</div>
 </template>
 
 <script>

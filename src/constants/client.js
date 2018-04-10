@@ -2,18 +2,22 @@
 export const mainHeaders = [
   {
     text: "Buisness Name",
-    value: "businessName"
+    value: "businessName",
+    align: "center"
   },
   {
     text: "Full Name",
-    value: "fullname"
+    value: "fullname",
+    align: "center"
   },
   {
     text: "Invoice Prefix",
-    value: "invoicePrefix"
+    value: "invoicePrefix",
+    align: "center"
   },
   {
     text: "Actions",
-    value: "actions"
+    value: "actions",
+    align: "center"
   }
 ]

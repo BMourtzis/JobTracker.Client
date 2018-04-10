@@ -1,17 +1,21 @@
 <template>
   <div>
     <client-add/>
+    <client-details :clientId="clientId" :show="detailsShow"/>
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
       <template slot="items" slot-scope="props">
         <td>{{ props.item.businessName }}</td>
-        <td>{{ props.item.fullName }}</td>
+        <td>{{ props.item.firstName }} {{ props.item.lastName }}</td>
         <td>{{ props.item.invoicePrefix }}</td>
         <td class="justify-center layout px-0">
-          <v-btn icon class="mx-0">
+          <v-btn icon class="mx-0" @click.native="">
+            <v-icon color="orange">assignment</v-icon>
+          </v-btn>
+          <v-btn icon class="mx-0" @click.native="">
             <v-icon color="teal">edit</v-icon>
           </v-btn>
-          <v-btn icon class="mx-0">
+          <v-btn icon class="mx-0" @click.native="">
             <v-icon color="pink">delete</v-icon>
           </v-btn>
         </td>
@@ -27,18 +31,22 @@
 </template>
 
 <script>
-import addClient from './add';
+import add from './add';
+import details from './details';
 import { mainHeaders } from '../../constants/client';
 
 export default {
   name: "client-main",
   components: {
-    "client-add":addClient
+    "client-add":add,
+    "client-details": details
   },
   data() {
     return {
       headers: mainHeaders,
-      loading: true
+      loading: true,
+      detailsShow: true,
+      clientId: ""
     }
   },
   computed: {
@@ -55,11 +63,20 @@ export default {
         (err) => {
           this.loading = false;
         });
+    },
+    clickItem() {
+      console.log("item");
+    },
+    clickButton1() {
+      console.log("buton 1");
+    },
+    clickButton2() {
+      console.log("button 2");
     }
   },
   created: function() {
     this.getClients();
-  }
+  },
 }
 </script>
 
