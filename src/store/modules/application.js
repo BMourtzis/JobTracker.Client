@@ -28,9 +28,13 @@ const actions = {
     context.commit("updateLoadingStatus", false);
     context.commit("updateLoadingMessage", "");
   },
-  updateError(context, error, message) {
-    context.commit("updateErrorStatus", error);
+  enableError(context, message) {
+    context.commit("updateErrorStatus", true);
     context.commit("updateErrorMessage", message);
+  },
+  disableError(context) {
+    context.commit("updateErrorStatus", false);
+    context.commit("updateErrorMessage", "");
   }
 };
 
