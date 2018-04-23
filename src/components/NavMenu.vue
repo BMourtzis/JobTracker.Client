@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       list: navigationList
-    }
+    };
   },
   methods: {
     itemClick(index, path) {
@@ -35,7 +35,7 @@ export default {
       this.$router.push(path);
     }
   }
-}
+};
 </script>
 
 <style>

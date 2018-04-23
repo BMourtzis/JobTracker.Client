@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import loader from "../shared/loader";
+// import loader from "../shared/loader";
 import { requiredRule, emailRule } from "../../constants/rules";
 
 export default {
@@ -86,7 +86,7 @@ export default {
         primaryPhone: "",
         contacts: []
       }
-    }
+    };
   },
   methods: {
     addContact() {
@@ -116,7 +116,7 @@ export default {
           }
         ).finally(() => {
           this.$store.dispatch("disableLoading");
-        });
+        })
       }
     },
     cancel() {
@@ -137,7 +137,7 @@ export default {
       this.$refs.form.reset();
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

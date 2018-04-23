@@ -39,8 +39,8 @@ const actions = {
 };
 
 const mutations = {
-  changePage(state, n) {
-    state.main = n;
+  changePage(state, num) {
+    state.main = num;
   },
   updateLoadingStatus(state, status) {
     state.loading.enabled = status;
@@ -61,4 +61,4 @@ export default {
   getters,
   actions,
   mutations
-}
+};

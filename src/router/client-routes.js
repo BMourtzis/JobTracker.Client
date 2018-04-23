@@ -6,4 +6,4 @@ export default [
     name: 'Client',
     component: main
   }
-]
+];

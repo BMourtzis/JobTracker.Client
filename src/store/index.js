@@ -4,8 +4,8 @@ import Vuex from "vuex";
 
 // Modules
 import app from "./modules/application";
-import settings from "./modules/settings"
-import clients from "./modules/clients"
+import settings from "./modules/settings";
+import clients from "./modules/clients";
 
 // Other
 

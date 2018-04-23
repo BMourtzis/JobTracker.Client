@@ -20,4 +20,4 @@ export const mainHeaders = [
     value: "actions",
     align: "center"
   }
-]
+];
