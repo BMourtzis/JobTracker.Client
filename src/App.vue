@@ -24,6 +24,7 @@ import { navigationList } from './constants/navigation';
 
 
 export default {
+  // TODO: vuetify load icons to use offline
   name: 'App',
   components: {
     NavMenu,
