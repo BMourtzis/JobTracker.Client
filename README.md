@@ -1,4 +1,5 @@
-# job-tracker-vue
+# Job Tracker v2.0
+
 
 > A port of my job tracker project to vue
 
