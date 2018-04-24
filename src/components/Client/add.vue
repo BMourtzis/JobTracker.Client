@@ -1,56 +1,15 @@
 <template>
   <v-dialog v-model="dialog" max-width="50vw">
     <v-btn color="primary" slot="activator" class="mb-2 left">
-      <v-icon>add</v-icon>
-      New Client
+      <v-icon>add</v-icon>New Client
     </v-btn>
     <v-card>
       <v-card-title>
         <span class="headline">New Client</span>
       </v-card-title>
       <v-card-text>
-        <v-form v-model="valid" ref="form" >
-          <v-container grid-list-md>
-            <v-layout wrap>
-              <v-flex xs12 sm6 md9>
-                <v-text-field v-model="client.businessName" label="Business Name" :rules="[rules.required]" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md3>
-                <v-text-field v-model="client.invoicePrefix" counter="4" mask="AAAA" label="Invoice Prefix" :rules="[rules.required]" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm12 md12>
-                <v-text-field v-model="client.address" label="Address" :rules="[rules.required]" required></v-text-field>
-              </v-flex>
-              <v-spacer></v-spacer>
-              <v-flex xs12 sm12 md12><span class="subheading">Contant Details</span></v-flex>
-              <v-flex xs12 sm6 md6>
-                <v-text-field v-model="client.firstname" label="First Name" :rules="[rules.required]" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md6>
-                <v-text-field v-model="client.lastname" label="Last Name" :rules="[rules.required]" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md6>
-                <v-text-field v-model="client.email" label="Email" type="email" :rules="[rules.required, rules.email]" required></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md6>
-                <v-text-field v-model="client.primaryPhone" label="Primary Phone" :mask="'phone'"></v-text-field>
-              </v-flex>
-              <!-- Additional Phones -->
-              <template v-for="(contact, index) in client.contacts">
-                  <v-flex xs12 sm6 md4>
-                    <v-text-field v-model="contact.name" label="Contact Name" :rules="[rules.required]" required></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm6 md5>
-                    <v-text-field v-model="contact.phone" label="Phone" :mask="'phone'" :rules="[rules.required]" required></v-text-field>
-                  </v-flex>
-                  <v-flex><v-btn color="red darken-1" flat @click.native="removeContact(index)"><v-icon>clear</v-icon></v-btn></v-flex>
-                </template>
-              <v-flex xs12 sm12 md2>
-                <v-btn class="left" color="blue darken-1" flat @click.native="addContact">
-                  <v-icon>add</v-icon>New Phone</v-btn>
-              </v-flex>
-            </v-layout>
-          </v-container>
+        <v-form v-model="valid" ref="form">
+          <form-generator :schema="schema" :model="client"/>
         </v-form>
       </v-card-text>
       <v-card-actions>
@@ -63,18 +22,17 @@
 </template>
 
 <script>
-// import loader from "../shared/loader";
-import { requiredRule, emailRule } from "../../constants/rules";
+import formGenerator from "../shared/formGenerator";
+import {clientSchema} from "../../constants/client";
 
 export default {
+  components: {
+    "form-generator": formGenerator
+  },
   name: "client-add",
   data() {
     return {
       valid: true,
-      rules: {
-        required: requiredRule,
-        email: emailRule
-      },
       dialog: false,
       client: {
         businessName: "",
@@ -85,22 +43,24 @@ export default {
         email: "",
         primaryPhone: "",
         contacts: []
-      }
+      },
+      schema: clientSchema
     };
   },
   methods: {
-    addContact() {
-      this.client.contacts.push({
-        name: "",
-        phone: ""
-      });
-    },
-    removeContact(index) {
-      this.client.contacts.splice(index, 1);
-    },
+
+    /**
+     * createClient - Creates a new client, sends it to the server and saves the
+     * response to the store
+     *
+     * @return {Null}  null
+     */
     createClient() {
-      if(this.$refs.form.validate()) {
+      if (this.$refs.form.validate()) {
         this.dialog = false;
+
+        // In order to assign the true values instead of all the extra things needed
+        // to track changes
         let newClient = {};
         Object.assign(newClient, this.client);
 
@@ -119,12 +79,25 @@ export default {
         })
       }
     },
+
+    /**
+     * cancel - Closes the dialog, empty the form and removes the errors
+     *
+     * @return {Null}  null
+     */
     cancel() {
       this.dialog = false;
       setTimeout(() => {
         this.emptyForm();
       }, 300);
     },
+
+    //TODO: maybe remove it from the methods list as it is used by the component
+    /**
+     * emptyForm - Empty the form and removes the errors
+     *
+     * @return {Null}  null
+     */
     emptyForm() {
       this.client.businessName = "";
       this.client.invoicePrefix = "";
@@ -134,7 +107,10 @@ export default {
       this.client.email = "";
       this.client.primaryPhone = "";
       this.client.contacts = [];
-      this.$refs.form.reset();
+      //HACK: I'm pushing the reset to the end of the process
+      setTimeout(() => {
+        this.$refs.form.reset();
+      }, 0);
     }
   }
 };

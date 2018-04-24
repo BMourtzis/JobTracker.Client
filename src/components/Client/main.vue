@@ -1,7 +1,7 @@
 <template>
   <div>
     <client-add/>
-    <client-details :clientId="clientId" :show="detailsShow"/>
+    <!-- <client-details :clientId="clientId" :show="detailsShow"/> -->
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
       <template slot="items" slot-scope="props">
