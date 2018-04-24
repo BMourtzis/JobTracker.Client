@@ -9,7 +9,9 @@
         <span class="headline">New Client</span>
       </v-card-title>
       <v-card-text>
-        <v-form v-model="valid" ref="form" >
+        <form-fenerator :schema="schema"/>
+
+        <!-- <v-form v-model="valid" ref="form">
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12 sm6 md9>
@@ -34,9 +36,9 @@
               </v-flex>
               <v-flex xs12 sm6 md6>
                 <v-text-field v-model="client.primaryPhone" label="Primary Phone" :mask="'phone'"></v-text-field>
-              </v-flex>
+              </v-flex> -->
               <!-- Additional Phones -->
-              <template v-for="(contact, index) in client.contacts">
+              <!-- <template v-for="(contact, index) in client.contacts">
                   <v-flex xs12 sm6 md4>
                     <v-text-field v-model="contact.name" label="Contact Name" :rules="[rules.required]" required></v-text-field>
                   </v-flex>
@@ -51,7 +53,7 @@
               </v-flex>
             </v-layout>
           </v-container>
-        </v-form>
+        </v-form> -->
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -65,8 +67,12 @@
 <script>
 // import loader from "../shared/loader";
 import { requiredRule, emailRule } from "../../constants/rules";
+import formGenerator from "../shared/formGenerator";
 
 export default {
+  components: {
+    "form-fenerator": formGenerator
+  },
   name: "client-add",
   data() {
     return {
@@ -85,7 +91,25 @@ export default {
         email: "",
         primaryPhone: "",
         contacts: []
-      }
+      },
+      schema: [
+        {type: "single-line-text", name: "buisnessName", label: "Business Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 9, required: true},
+        {type: "single-line-text", name: "invoicePrefix", label: "Invoice Prefix", rules:[requiredRule], xsSize: 12, smSize: 6, mdSize: 3, required: true, counter: 4, mask: "AAAA"},
+        {type: "single-line-text", name: "addresss", label: "Addresss", rules: [requiredRule], xsSize: 12, smSize: 12, mdSize: 12, required: true},
+        {type: "spacer"},
+        {type: "subheading", label: "Contact Details"},
+        {type: "single-line-text", name: "firstname", label: "First Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+        {type: "single-line-text", name: "lastname", label: "Last Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+        {type: "single-line-text", name: "email", fieldType:"email", label: "Email", rules: [requiredRule, emailRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+        {type: "single-line-text", name: "primaryPhone", label: "Primary Phone", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true, mask: "phone"},
+        {type: "spacer"},
+        {type: "subheading", label: "Additional Contacts"},
+        {type: "sub-list", name:"contacts", addBtnName:"New Phone", fields: [
+          {type: "single-line-text", name: "name", label: "Contact Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+          {type: "single-line-text", name: "phone", label: "Phone", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true, mask: "phone"},
+        ]
+        }
+      ]
     };
   },
   methods: {
