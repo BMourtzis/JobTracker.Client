@@ -1,8 +1,7 @@
 <template>
   <v-dialog v-model="dialog" max-width="50vw">
     <v-btn color="primary" slot="activator" class="mb-2 left">
-      <v-icon>add</v-icon>
-      New Client
+      <v-icon>add</v-icon>New Client
     </v-btn>
     <v-card>
       <v-card-title>
@@ -49,9 +48,19 @@ export default {
     };
   },
   methods: {
+
+    /**
+     * createClient - Creates a new client, sends it to the server and saves the
+     * response to the store
+     *
+     * @return {Null}  null
+     */
     createClient() {
-      if(this.$refs.form.validate()) {
+      if (this.$refs.form.validate()) {
         this.dialog = false;
+
+        // In order to assign the true values instead of all the extra things needed
+        // to track changes
         let newClient = {};
         Object.assign(newClient, this.client);
 
@@ -70,12 +79,25 @@ export default {
         })
       }
     },
+
+    /**
+     * cancel - Closes the dialog, empty the form and removes the errors
+     *
+     * @return {Null}  null
+     */
     cancel() {
       this.dialog = false;
       setTimeout(() => {
         this.emptyForm();
       }, 300);
     },
+
+    //TODO: maybe remove it from the methods list as it is used by the component
+    /**
+     * emptyForm - Empty the form and removes the errors
+     *
+     * @return {Null}  null
+     */
     emptyForm() {
       this.client.businessName = "";
       this.client.invoicePrefix = "";
@@ -85,7 +107,7 @@ export default {
       this.client.email = "";
       this.client.primaryPhone = "";
       this.client.contacts = [];
-      //HACK: I'm pushing the reset to the end of the jobs
+      //HACK: I'm pushing the reset to the end of the process
       setTimeout(() => {
         this.$refs.form.reset();
       }, 0);

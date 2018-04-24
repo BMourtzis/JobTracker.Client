@@ -52,9 +52,24 @@ export default {
     }
   },
   methods: {
+
+    /**
+     * addItem - Generic method, used to add empty objects to a list
+     *
+     * @param  {String} fieldName The name of the list
+     * @return {Null}             null
+     */
     addItem(fieldName) {
       this.model[fieldName].push({});
     },
+
+    /**
+     * removeItem - Removes an item from the list
+     *
+     * @param  {String} fieldName The name of the list
+     * @param  {Number} index     The index of the item
+     * @return {Null}             null
+     */
     removeItem(fieldName, index) {
       this.model[fieldName].splice(index, 1);
     }
@@ -62,6 +77,6 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
