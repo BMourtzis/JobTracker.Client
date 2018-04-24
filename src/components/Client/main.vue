@@ -1,7 +1,9 @@
 <template>
   <div>
     <client-add/>
-    <!-- <client-details :clientId="clientId" :show="detailsShow"/> -->
+    <v-dialog v-model="detailsDialog" max-width="50vw">
+      <client-details :clientId="clientId"/>
+    </v-dialog>
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
       <template slot="items" slot-scope="props">
@@ -9,7 +11,7 @@
         <td>{{ props.item.firstName }} {{ props.item.lastName }}</td>
         <td>{{ props.item.invoicePrefix }}</td>
         <td class="justify-center layout px-0">
-          <v-btn icon class="mx-0" @click.native="">
+          <v-btn icon class="mx-0" @click.native="details(props.item.id)">
             <v-icon color="orange">assignment</v-icon>
           </v-btn>
           <v-btn icon class="mx-0" @click.native="">
@@ -45,7 +47,7 @@ export default {
     return {
       headers: mainHeaders,
       loading: true,
-      detailsShow: true,
+      detailsDialog: false,
       clientId: ""
     }
   },
@@ -63,6 +65,10 @@ export default {
         (err) => {
           this.loading = false;
         });
+    },
+    details(id) {
+      this.clientId = id;
+      this.detailsDialog = true;
     },
     clickItem() {
       console.log("item");

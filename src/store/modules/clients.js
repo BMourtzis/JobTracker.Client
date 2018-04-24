@@ -6,7 +6,11 @@ const state = {
 };
 
 const getters = {
-
+  findClient: (state) => (id) => {
+    return state.clientList.find((client) => {
+      return client.id === id;
+    });
+  }
 };
 
 const actions = {
