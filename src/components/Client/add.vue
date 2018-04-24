@@ -66,8 +66,9 @@
 
 <script>
 // import loader from "../shared/loader";
-import { requiredRule, emailRule } from "../../constants/rules";
+import {requiredRule, emailRule} from "../../constants/rules";
 import formGenerator from "../shared/formGenerator";
+import {SINGLE_LINE_TEXT, SPACER, SUBHEADING, LIST} from "../../constants/formGenerator";
 
 export default {
   components: {
@@ -93,20 +94,20 @@ export default {
         contacts: []
       },
       schema: [
-        {type: "single-line-text", name: "buisnessName", label: "Business Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 9, required: true},
-        {type: "single-line-text", name: "invoicePrefix", label: "Invoice Prefix", rules:[requiredRule], xsSize: 12, smSize: 6, mdSize: 3, required: true, counter: 4, mask: "AAAA"},
-        {type: "single-line-text", name: "addresss", label: "Addresss", rules: [requiredRule], xsSize: 12, smSize: 12, mdSize: 12, required: true},
-        {type: "spacer"},
-        {type: "subheading", label: "Contact Details"},
-        {type: "single-line-text", name: "firstname", label: "First Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
-        {type: "single-line-text", name: "lastname", label: "Last Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
-        {type: "single-line-text", name: "email", fieldType:"email", label: "Email", rules: [requiredRule, emailRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
-        {type: "single-line-text", name: "primaryPhone", label: "Primary Phone", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true, mask: "phone"},
-        {type: "spacer"},
-        {type: "subheading", label: "Additional Contacts"},
-        {type: "sub-list", name:"contacts", addBtnName:"New Phone", fields: [
-          {type: "single-line-text", name: "name", label: "Contact Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
-          {type: "single-line-text", name: "phone", label: "Phone", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true, mask: "phone"},
+        {type: SINGLE_LINE_TEXT, name: "buisnessName", label: "Business Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 9, required: true},
+        {type: SINGLE_LINE_TEXT, name: "invoicePrefix", label: "Invoice Prefix", rules:[requiredRule], xsSize: 12, smSize: 6, mdSize: 3, required: true, counter: 4, mask: "AAAA"},
+        {type: SINGLE_LINE_TEXT, name: "addresss", label: "Addresss", rules: [requiredRule], xsSize: 12, smSize: 12, mdSize: 12, required: true},
+        {type: SPACER},
+        {type: SUBHEADING, label: "Contact Details"},
+        {type: SINGLE_LINE_TEXT, name: "firstname", label: "First Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+        {type: SINGLE_LINE_TEXT, name: "lastname", label: "Last Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+        {type: SINGLE_LINE_TEXT, name: "email", fieldType:"email", label: "Email", rules: [requiredRule, emailRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+        {type: SINGLE_LINE_TEXT, name: "primaryPhone", label: "Primary Phone", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true, mask: "phone"},
+        {type: SPACER},
+        {type: SUBHEADING, label: "Additional Contacts"},
+        {type: LIST, name:"contacts", addBtnName:"New Phone", fields: [
+          {type: SINGLE_LINE_TEXT, name: "name", label: "Contact Name", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true},
+          {type: SINGLE_LINE_TEXT, name: "phone", label: "Phone", rules: [requiredRule], xsSize: 12, smSize: 6, mdSize: 6, required: true, mask: "phone"},
         ]
         }
       ]
