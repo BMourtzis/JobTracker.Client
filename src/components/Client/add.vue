@@ -150,15 +150,15 @@ export default {
       }, 300);
     },
     emptyForm() {
-      this.client.businessName = "";
-      this.client.invoicePrefix = "";
-      this.client.address = "";
-      this.client.firstname = "";
-      this.client.lastname = "";
-      this.client.email = "";
-      this.client.primaryPhone = "";
-      this.client.contacts = [];
-      this.$refs.form.reset();
+      // this.client.businessName = "";
+      // this.client.invoicePrefix = "";
+      // this.client.address = "";
+      // this.client.firstname = "";
+      // this.client.lastname = "";
+      // this.client.email = "";
+      // this.client.primaryPhone = "";
+      // this.client.contacts = [];
+      // this.$refs.form.reset();
     }
   }
 };

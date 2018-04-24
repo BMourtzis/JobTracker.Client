@@ -2,7 +2,7 @@
   <v-form v-model="valid" ref="form" >
     <v-container grid-list-md>
       <v-layout wrap>
-        <template v-for="(field) of schema">
+        <template v-for="(field, fieldIndex) in schema">
           <!-- TODO: Add a constant for symbols of fields -->
           <!-- TODO: Find a way to set size -->
           <v-flex v-if="field.type === 'single-line-text'">
@@ -13,9 +13,10 @@
             <span class="subheading">{{field.label}}</span>
           </v-flex>
           <template v-else-if="field.type === 'sub-list'">
-            <template v-for="(item, index) of model[field.name]">
-              <v-flex v-for="(subfield) of field.fields">
-                <v-text-field v-model="model[field.name][index][subfield.name]" :type="subfield.fieldType" :label="subfield.label" :rules="subfield.rules" :required="subfield.required? true: false" :counter="subfield.counter" :mask="subfield.mask"></v-text-field>
+            <template v-for="(item, index) in model[field.name]">
+              <v-flex v-for="(subfield, subIndex) in field.fields" :key="subIndex">
+                <!-- v-model="item[index][subfield.name]" -->
+                <v-text-field  :type="subfield.fieldType" :label="subfield.label" :rules="subfield.rules" :required="subfield.required? true: false" :counter="subfield.counter" :mask="subfield.mask"></v-text-field>
               </v-flex>
               <v-flex><v-btn color="red darken-1" flat @click.native="removeItem(field.name, item)"><v-icon>clear</v-icon></v-btn></v-flex>
             </template>
@@ -44,7 +45,7 @@ export default {
   methods: {
     addItem(fieldName) {
       if(!this.model[fieldName]) {
-        this.model[fieldName] = [];
+        this.$set(this.model, fieldName, []);
       }
       this.model[fieldName].push({});
     },
