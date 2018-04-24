@@ -3,8 +3,7 @@
     <v-container grid-list-md>
       <v-layout wrap>
         <template v-for="(field, fieldIndex) in schema">
-          <!-- TODO: Find a way to set size -->
-          <v-flex v-if="field.type === SINGLE_LINE_TEXT">
+          <v-flex v-if="field.type === SINGLE_LINE_TEXT" xs12 sm6 :md3="field.smallQuarter" :md6="field.half" :md9="field.largeQuarter" :md12="field.full">
             <v-text-field v-model="model[field.name]" :type="field.fieldType" :label="field.label" :rules="field.rules" :required="field.required? true: false" :counter="field.counter" :mask="field.mask"></v-text-field>
           </v-flex>
           <v-spacer v-else-if="field.type === SPACER"></v-spacer>
@@ -13,8 +12,7 @@
           </v-flex>
           <template v-else-if="field.type === LIST">
             <template v-for="(item, index) in model[field.name]">
-              <v-flex v-for="(subfield, subIndex) in field.fields" :key="subIndex">
-                <!-- v-model="item[index][subfield.name]" -->
+              <v-flex v-for="(subfield, subIndex) in field.fields" :key="(index * 2) + subIndex" xs12 sm6 :md4="subfield.small" :md5="subfield.large">
                 <v-text-field v-model="model[field.name][index][subfield.name]"  :type="subfield.fieldType" :label="subfield.label" :rules="subfield.rules" :required="subfield.required? true: false" :counter="subfield.counter" :mask="subfield.mask"></v-text-field>
               </v-flex>
               <v-flex><v-btn color="red darken-1" flat @click.native="removeItem(field.name, item)"><v-icon>clear</v-icon></v-btn></v-flex>
