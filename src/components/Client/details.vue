@@ -36,6 +36,7 @@
 
 <script>
 import detailsGenerator from "../shared/detailsGenerator";
+import {clientDetailsSchema} from "../../constants/client";
 
 export default {
   components:{
@@ -46,14 +47,7 @@ export default {
   ],
   data() {
     return {
-      schema: [
-        {type: "field", items:[{name: "address", label: "Address"}, {name: "parent", label: "Parent"}]},
-        {type: "divider"},
-        {type: "subheader", label: "Contacts"},
-        {type: "field", items:[{name: "fullname", label: "Name"}]},
-        {type: "field", items:[{name: "email", label: "Email"}, {name: "phone", label: "Phone"}]},
-        {type: "list", label:"Additional Contacts", items:[{name: "name", label: "Name"}, {name: "phone", label: "Phone"}]}
-      ]
+      schema: clientDetailsSchema
     }
   },
   computed: {

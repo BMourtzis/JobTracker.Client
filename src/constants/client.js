@@ -1,5 +1,6 @@
 import {requiredRule, emailRule} from "./rules";
 import {SINGLE_LINE_TEXT, SPACER, SUBHEADING, LIST} from "./formGenerator";
+import {FIELD, DIVIDER, SUBHEADER, SUBLIST} from "./detailsGenerator";
 
 export const mainHeaders = [
   {
@@ -40,4 +41,13 @@ export const clientSchema = [
     {type: SINGLE_LINE_TEXT, name: "name", label: "Contact Name", rules: [requiredRule], small: true, required: true},
     {type: SINGLE_LINE_TEXT, name: "phone", label: "Phone", rules: [requiredRule], large: true, required: true, mask: "phone"}
   ]}
+];
+
+export const clientDetailsSchema = [
+  {type: FIELD, items: [{name: "address", label: "Address"}, {name: "parent", label: "Parent"}]},
+  {type: DIVIDER},
+  {type: SUBHEADER, label: "Contacts"},
+  {type: FIELD, items: [{name: "fullname", label: "Name"}]},
+  {type: FIELD, items: [{name: "email", label: "Email"}, {name: "phone", label: "Phone"}]},
+  {type: SUBLIST, label: "Additional Contacts", items: [{name: "name", label: "Name"}, {name: "phone", label: "Phone"}]}
 ];
