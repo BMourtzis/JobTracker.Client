@@ -1,9 +1,12 @@
 <template>
   <div>
-    <client-add/>
-    <v-dialog v-model="detailsDialog" max-width="50vw">
-      <client-details :clientId="clientId"/>
-    </v-dialog>
+    <!-- <client-add/> -->
+    <v-btn color="primary" slot="activator" class="mb-2 left" @click.native="openDialogAdd">
+      <v-icon>add</v-icon>New Client
+    </v-btn>
+    <!-- <v-dialog v-model="detailsDialog" max-width="50vw"> -->
+      <!-- <client-details v-model="testModel" :clientId="clientId"/> -->
+    <!-- </v-dialog> -->
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
       <template slot="items" slot-scope="props">
@@ -47,8 +50,6 @@ export default {
     return {
       headers: mainHeaders,
       loading: true,
-      detailsDialog: false,
-      clientId: ""
     }
   },
   computed: {
@@ -66,9 +67,11 @@ export default {
           this.loading = false;
         });
     },
+    openDialogAdd(){
+      this.$store.dispatch("openDialog", {route: "addClient"});
+    },
     details(id) {
-      this.clientId = id;
-      this.detailsDialog = true;
+      this.$store.dispatch("openDialog", {route: "clientDetails", params: {clientId: id}});
     },
     clickItem() {
       console.log("item");
