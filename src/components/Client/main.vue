@@ -13,7 +13,7 @@
           <v-btn icon class="mx-0" @click.native="details(props.item.id)">
             <v-icon color="orange">assignment</v-icon>
           </v-btn>
-          <v-btn icon class="mx-0" @click.native="">
+          <v-btn icon class="mx-0" @click.native="edit(props.item.id)">
             <v-icon color="teal">edit</v-icon>
           </v-btn>
           <v-btn icon class="mx-0" @click.native="">
@@ -69,14 +69,8 @@ export default {
     details(id) {
       this.$store.dispatch("openDialog", {route: "clientDetails", params: {clientId: id}});
     },
-    clickItem() {
-      console.log("item");
-    },
-    clickButton1() {
-      console.log("buton 1");
-    },
-    clickButton2() {
-      console.log("button 2");
+    edit(id) {
+      this.$store.dispatch("openDialog", {route: "clientUpdate", params: {clientId: id}});
     }
   },
   created: function() {

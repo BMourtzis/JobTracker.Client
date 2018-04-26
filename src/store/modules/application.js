@@ -12,7 +12,7 @@ const state = {
     message: ""
   },
   dialog: {
-    open: false,
+    open: false
   }
 };
 
@@ -47,7 +47,8 @@ const actions = {
   setDialog(context, open) {
     context.commit("updateDialogOpen", open);
   },
-  closeDialog(context) {
+  closeDialog(context, route) {
+    router.push({name: route});
     context.commit("updateDialogOpen", false);
   }
 };

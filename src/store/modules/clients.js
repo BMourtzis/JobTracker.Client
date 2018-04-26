@@ -34,12 +34,24 @@ const actions = {
 const mutations = {
   updateClients(state, clients) {
     state.clientList = [];
+    for(let client of clients) {
+      Reflect.defineProperty(client, "fullname", {
+        get: function() {
+          return `${this.firstName} ${this.lastName}`;
+        }
+      });
+    }
     state.clientList.push(...clients);
   },
   updateTimestamp(state) {
     state.lastFetchTimestamp = Date.now();
   },
   newClient(state, client) {
+    Reflect.defineProperty(client, "fullname", {
+      get: function() {
+        return `${this.firstName} ${this.lastName}`;
+      }
+    });
     state.clientList.push(client);
   }
 };

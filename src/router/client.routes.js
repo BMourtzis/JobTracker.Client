@@ -1,6 +1,7 @@
 import main from '@/components/Client/main';
 import add from '@/components/Client/add';
 import details from "@/components/Client/details";
+import edit from "@/components/Client/edit";
 
 export default [
   {
@@ -22,6 +23,18 @@ export default [
     components: {
       default: main,
       dialog: details
+    },
+    props: {
+      default: false,
+      dialog: true
+    }
+  },
+  {
+    path: '/client/:clientId/edit',
+    name: "clientUpdate",
+    components: {
+      default: main,
+      dialog: edit
     },
     props: {
       default: false,

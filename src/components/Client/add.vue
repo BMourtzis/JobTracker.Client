@@ -14,7 +14,6 @@
         <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
       </v-card-actions>
     </v-card>
-  <!-- </v-dialog> -->
 </template>
 
 <script>
@@ -33,8 +32,8 @@ export default {
         businessName: "",
         invoicePrefix: "",
         address: "",
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: "",
         primaryPhone: "",
         contacts: []
@@ -81,7 +80,7 @@ export default {
      * @return {Null}  null
      */
     cancel() {
-      this.$store.dispatch("closeDialog");
+      this.$store.dispatch("closeDialog", "Client");
       setTimeout(() => {
         this.emptyForm();
       }, 300);
@@ -97,8 +96,8 @@ export default {
       this.client.businessName = "";
       this.client.invoicePrefix = "";
       this.client.address = "";
-      this.client.firstname = "";
-      this.client.lastname = "";
+      this.client.firstName = "";
+      this.client.lastName = "";
       this.client.email = "";
       this.client.primaryPhone = "";
       this.client.contacts = [];
@@ -112,14 +111,5 @@ export default {
 </script>
 
 <style lang="scss">
-.subheading {
-    float: left;
-    font-size: 20px !important;
-    font-weight: 400;
-    line-height: 32px !important;
-    letter-spacing: normal !important;
-}
-.left {
-    float: left;
-}
+
 </style>

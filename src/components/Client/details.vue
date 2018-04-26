@@ -32,16 +32,12 @@ export default {
   },
   computed: {
     client() {
-      let client = this.$store.getters.findClient(this.clientId);
-      Object.defineProperty(client, "fullname", {get: function() {return `${this.firstName} ${this.lastName}`}});
-      // client.fullname = `${client.firstName} ${client.lastName}`;
-      return client;
-
+      return this.$store.getters.findClient(this.clientId);
     }
   },
   methods: {
     close() {
-      this.$store.dispatch("closeDialog");
+      this.$store.dispatch("closeDialog", "Client");
     }
   }
 }
