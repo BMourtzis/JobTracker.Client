@@ -7,31 +7,11 @@
     </v-card-title>
     <v-card-text>
       <detailsGenerator :schema="schema" :model="client"/>
-      <!--
-        <template v-if="client.contacts">
-        <v-divider></v-divider>
-        <v-subheader>Additional Contacts</v-subheader>
-        </template>
-
-        <template v-for="(item, index) of client.contacts">
-        <v-divider v-if="index !== 0"></v-divider>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Name</v-list-tile-title>
-            <v-list-tile-sub-title>{{item.name}}</v-list-tile-sub-title>
-          </v-list-tile-content>
-          <v-list-tile-content>
-            <v-list-tile-title>Phone</v-list-tile-title>
-            <v-list-tile-sub-title>{{item.phone}}</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </template> -->
     </v-card-text>
     <v-card-actions>
       <v-btn color="red darken-1" flat @click.native="close">Close</v-btn>
     </v-card-actions>
   </v-card>
-<!-- </v-dialog> -->
 </template>
 
 <script>
@@ -52,7 +32,11 @@ export default {
   },
   computed: {
     client() {
-      return this.$store.getters.findClient(this.clientId);
+      let client = this.$store.getters.findClient(this.clientId);
+      Object.defineProperty(client, "fullname", {get: function() {return `${this.firstName} ${this.lastName}`}});
+      // client.fullname = `${client.firstName} ${client.lastName}`;
+      return client;
+
     }
   },
   methods: {
