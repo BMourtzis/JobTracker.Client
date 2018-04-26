@@ -1,8 +1,4 @@
 <template>
-  <v-dialog v-model="dialog" max-width="50vw">
-    <v-btn color="primary" slot="activator" class="mb-2 left">
-      <v-icon>add</v-icon>New Client
-    </v-btn>
     <v-card>
       <v-card-title>
         <span class="headline">New Client</span>
@@ -18,7 +14,7 @@
         <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
       </v-card-actions>
     </v-card>
-  </v-dialog>
+  <!-- </v-dialog> -->
 </template>
 
 <script>
@@ -33,7 +29,6 @@ export default {
   data() {
     return {
       valid: true,
-      dialog: false,
       client: {
         businessName: "",
         invoicePrefix: "",
@@ -57,7 +52,7 @@ export default {
      */
     createClient() {
       if (this.$refs.form.validate()) {
-        this.dialog = false;
+        this.$store.dispatch("closeDialog");
 
         // In order to assign the true values instead of all the extra things needed
         // to track changes
@@ -86,7 +81,7 @@ export default {
      * @return {Null}  null
      */
     cancel() {
-      this.dialog = false;
+      this.$store.dispatch("closeDialog");
       setTimeout(() => {
         this.emptyForm();
       }, 300);

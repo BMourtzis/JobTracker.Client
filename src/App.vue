@@ -14,12 +14,14 @@
     <!-- <v-footer app>Footer</v-footer> -->
   </v-app>
   <loader></loader>
+  <genericDialog></genericDialog>
 </div>
 </template>
 
 <script>
 import NavMenu from './components/NavMenu';
 import loader from './components/shared/loader';
+import dialog from "./components/shared/dialog";
 import { navigationList } from './constants/navigation';
 
 
@@ -28,7 +30,8 @@ export default {
   name: 'App',
   components: {
     NavMenu,
-    "loader": loader
+    "loader": loader,
+    "genericDialog": dialog
   },
   computed: {
     title() {

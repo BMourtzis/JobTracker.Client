@@ -1,4 +1,5 @@
 // Dependencies
+import router from '../../router/index';
 
 const state = {
   main: 0,
@@ -9,6 +10,9 @@ const state = {
   error: {
     enabled: false,
     message: ""
+  },
+  dialog: {
+    open: false,
   }
 };
 
@@ -35,6 +39,16 @@ const actions = {
   disableError(context) {
     context.commit("updateErrorStatus", false);
     context.commit("updateErrorMessage", "");
+  },
+  openDialog(context, {route, params}) {
+    context.commit("updateDialogOpen", true);
+    router.push({name: route, params});
+  },
+  setDialog(context, open) {
+    context.commit("updateDialogOpen", open);
+  },
+  closeDialog(context) {
+    context.commit("updateDialogOpen", false);
   }
 };
 
@@ -53,6 +67,9 @@ const mutations = {
   },
   updateErrorMessage(state, message) {
     state.error.message = message;
+  },
+  updateDialogOpen(state, open) {
+    state.dialog.open = open;
   }
 };
 
