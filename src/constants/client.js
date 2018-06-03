@@ -44,6 +44,7 @@ export const clientSchema = [
 ];
 
 export const clientDetailsSchema = [
+  {type: FIELD, items: [{name: "businessName", label: "Business Name"}, {name: "invoicePrefix", label: "Invoice Prefix"}]},
   {type: FIELD, items: [{name: "address", label: "Address"}, {name: "parent", label: "Parent"}]},
   {type: DIVIDER},
   {type: SUBHEADER, label: "Contacts"},

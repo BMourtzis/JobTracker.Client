@@ -2,7 +2,7 @@
 <!-- <v-dialog v-model="open" max-width="50vw"> -->
   <v-card v-if="client">
     <v-card-title>
-      <span class="headline">{{client.businessName}} ({{client.invoicePrefix}})</span>
+      <span class="headline">Client Details</span>
       <v-btn color="blue darken-1" flat @click.native=""><v-icon>edit</v-icon>Edit</v-btn>
     </v-card-title>
     <v-card-text>

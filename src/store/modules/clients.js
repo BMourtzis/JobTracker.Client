@@ -1,4 +1,7 @@
-import { getClients, newClient } from '../../api/clients';
+import {
+  getClients,
+  newClient
+} from '../../api/clients';
 
 const state = {
   lastFetchTimestamp: 0,
@@ -15,7 +18,30 @@ const getters = {
 
 const actions = {
   loadClients(context) {
-    let clientCall = getClients().then((data) => {
+    let clientCall;
+
+    if (process.env.NODE_ENV === "development") {
+      clientCall = new Promise((resolve, reject) => {
+        let clients = [{
+          id: "me",
+          firstName: "Vasileios",
+          lastName: "Mourtzis",
+          businessName: "Team Vasi",
+          invoicePrefix: "TVPL",
+          address: "498 somewhere st",
+          email: "vasi@me.com",
+          primaryPhone: "0123456789",
+          contancts: [{name: "secondary", phone: "0123456789"}]
+        }];
+
+        resolve({data: clients});
+      });
+    }
+    else {
+      clientCall = getClients();
+    }
+
+    clientCall.then((data) => {
       context.commit("updateClients", data.data);
       context.commit("updateTimestamp");
     });
@@ -34,9 +60,9 @@ const actions = {
 const mutations = {
   updateClients(state, clients) {
     state.clientList = [];
-    for(let client of clients) {
+    for (let client of clients) {
       Reflect.defineProperty(client, "fullname", {
-        get: function() {
+        get() {
           return `${this.firstName} ${this.lastName}`;
         }
       });
@@ -48,7 +74,7 @@ const mutations = {
   },
   newClient(state, client) {
     Reflect.defineProperty(client, "fullname", {
-      get: function() {
+      get() {
         return `${this.firstName} ${this.lastName}`;
       }
     });

@@ -101,6 +101,7 @@ export default {
       this.client.email = "";
       this.client.primaryPhone = "";
       this.client.contacts = [];
+      
       //HACK: I'm pushing the reset to the end of the process
       setTimeout(() => {
         this.$refs.form.reset();

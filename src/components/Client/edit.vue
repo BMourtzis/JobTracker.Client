@@ -28,7 +28,7 @@ export default {
     "clientId"
   ],
   data() {
-    //Used to copy object, else it will mutate the state of the store
+    //NOTE: Used to copy object, else it will mutate the state of the store
     let client = Object.assign({}, this.$store.getters.findClient(this.clientId));
     return {
       valid: true,
@@ -47,9 +47,12 @@ export default {
       }, 300);
     },
     resetForm() {
+      console.log(this.client.businessName);
       this.client = Object.assign({}, this.$store.getters.findClient(this.clientId));
+      console.log(this.$refs);
       //HACK: I'm pushing the reset to the end of the process
       setTimeout(() => {
+        console.log(this.$refs);
         this.$refs.form.reset();
       }, 0);
     }
@@ -57,6 +60,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
