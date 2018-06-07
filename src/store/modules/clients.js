@@ -10,9 +10,11 @@ const state = {
 
 const getters = {
   findClient: (state) => (id) => {
-    return state.clientList.find((client) => {
+    let client = state.clientList.find((client) => {
       return client.id === id;
     });
+    
+    return Object.assign({}, client);
   }
 };
 

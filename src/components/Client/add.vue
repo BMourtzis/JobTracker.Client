@@ -1,24 +1,24 @@
 <template>
-    <v-card>
-      <v-card-title>
-        <span class="headline">New Client</span>
-      </v-card-title>
-      <v-card-text>
-        <v-form v-model="valid" ref="form">
-          <form-generator :schema="schema" :model="client"/>
-        </v-form>
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
-        <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
-      </v-card-actions>
-    </v-card>
+  <v-card>
+    <v-card-title>
+      <span class="headline">New Client</span>
+    </v-card-title>
+    <v-card-text>
+      <v-form v-model="valid" ref="form">
+        <form-generator :schema="schema" :model="client"/>
+      </v-form>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
+      <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
 import formGenerator from "../shared/formGenerator";
-import {clientSchema} from "../../constants/client";
+import { clientSchema } from "../../constants/client";
 
 export default {
   components: {
@@ -42,7 +42,6 @@ export default {
     };
   },
   methods: {
-
     /**
      * createClient - Creates a new client, sends it to the server and saves the
      * response to the store
@@ -59,18 +58,21 @@ export default {
         Object.assign(newClient, this.client);
 
         this.$store.dispatch("enableLoading", "Loading...");
-        this.$store.dispatch("addClient", newClient).then(
-          () => {
-            setTimeout(() => {
-              this.emptyForm();
-            }, 300);
-          },
-          (err) => {
-            this.dialog = true;
-          }
-        ).finally(() => {
-          this.$store.dispatch("disableLoading");
-        })
+        this.$store
+          .dispatch("addClient", newClient)
+          .then(
+            () => {
+              setTimeout(() => {
+                this.emptyForm();
+              }, 300);
+            },
+            err => {
+              this.dialog = true;
+            }
+          )
+          .finally(() => {
+            this.$store.dispatch("disableLoading");
+          });
       }
     },
 
@@ -101,7 +103,7 @@ export default {
       this.client.email = "";
       this.client.primaryPhone = "";
       this.client.contacts = [];
-      
+
       //HACK: I'm pushing the reset to the end of the process
       setTimeout(() => {
         this.$refs.form.reset();
@@ -112,5 +114,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>
