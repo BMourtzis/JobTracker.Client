@@ -6,7 +6,7 @@
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
-    <v-content>
+    <v-content  class="main-container">
       <v-container fluid>
         <router-view />
       </v-container>
@@ -49,5 +49,9 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+}
+
+.main-container{
+  padding-top: 0 !important;
 }
 </style>

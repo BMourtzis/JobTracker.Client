@@ -1,12 +1,8 @@
 <template>
   <div>
-    <!-- <client-add/> -->
     <v-btn color="primary" slot="activator" class="mb-2 left" @click.native="openDialogAdd">
       <v-icon>add</v-icon>New Client
     </v-btn>
-    <!-- <v-dialog v-model="detailsDialog" max-width="50vw"> -->
-      <!-- <client-details v-model="testModel" :clientId="clientId"/> -->
-    <!-- </v-dialog> -->
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
       <template slot="items" slot-scope="props">
@@ -17,7 +13,7 @@
           <v-btn icon class="mx-0" @click.native="details(props.item.id)">
             <v-icon color="orange">assignment</v-icon>
           </v-btn>
-          <v-btn icon class="mx-0" @click.native="">
+          <v-btn icon class="mx-0" @click.native="edit(props.item.id)">
             <v-icon color="teal">edit</v-icon>
           </v-btn>
           <v-btn icon class="mx-0" @click.native="">
@@ -73,14 +69,8 @@ export default {
     details(id) {
       this.$store.dispatch("openDialog", {route: "clientDetails", params: {clientId: id}});
     },
-    clickItem() {
-      console.log("item");
-    },
-    clickButton1() {
-      console.log("buton 1");
-    },
-    clickButton2() {
-      console.log("button 2");
+    edit(id) {
+      this.$store.dispatch("openDialog", {route: "clientUpdate", params: {clientId: id}});
     }
   },
   created: function() {

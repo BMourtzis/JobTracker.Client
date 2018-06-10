@@ -78,5 +78,14 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .subheading {
+    float: left;
+    font-size: 20px !important;
+    font-weight: 400;
+    line-height: 32px !important;
+    letter-spacing: normal !important;
+  }
+  .left {
+    float: left;
+  }
 </style>
