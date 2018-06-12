@@ -10,7 +10,6 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
     </v-card-actions>
   </v-card>

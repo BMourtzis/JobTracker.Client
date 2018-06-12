@@ -16,7 +16,7 @@
           <v-btn icon class="mx-0" @click.native="edit(props.item.id)">
             <v-icon color="teal">edit</v-icon>
           </v-btn>
-          <v-btn icon class="mx-0" @click.native="">
+          <v-btn icon class="mx-0" @click.native="delete(props.item.id)">
             <v-icon color="pink">delete</v-icon>
           </v-btn>
         </td>
@@ -80,6 +80,9 @@ export default {
     },
     edit(id) {
       this.$router.push({ name: 'clientUpdate', params: { clientId: id }});
+    },
+    delete(id) {
+
     }
   },
   created: function() {

@@ -10,18 +10,20 @@ export default [
     component: main
   },
   {
-    path: '/client/:clientId/details',
+    path: '/client/add',
     name: "clientAdd",
     component: add
   },
   {
     path: '/client/:clientId/details',
     name: "clientDetails",
-    component: details
+    component: details,
+    props: true
   },
   {
     path: '/client/:clientId/edit',
     name: "clientUpdate",
-    component: edit
+    component: edit,
+    props: true
   }
 ];
