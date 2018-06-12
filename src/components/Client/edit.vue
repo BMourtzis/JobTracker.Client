@@ -29,11 +29,14 @@ export default {
   ],
   data() {
     //NOTE: Used to copy object, else it will mutate the state of the store
-    let client = Object.assign({}, this.$store.getters.findClient(this.clientId));
     return {
       valid: true,
-      client,
       schema: clientSchema
+    }
+  },
+  computed: {
+    client() {
+      return Object.assign({}, this.$store.getters.findClient(this.clientId));
     }
   },
   methods: {
@@ -41,10 +44,8 @@ export default {
       return "";
     },
     cancel() {
-      this.$store.dispatch("closeDialog", "Client");
-      setTimeout(() => {
-        this.resetForm();
-      }, 300);
+      this.$router.push({name: "Client"});
+      this.resetForm();
     },
     resetForm() {
       console.log(this.client.businessName);

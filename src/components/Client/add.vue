@@ -62,9 +62,7 @@ export default {
           .dispatch("addClient", newClient)
           .then(
             () => {
-              setTimeout(() => {
-                this.emptyForm();
-              }, 300);
+              this.emptyForm();
             },
             err => {
               this.dialog = true;
@@ -82,13 +80,10 @@ export default {
      * @return {Null}  null
      */
     cancel() {
-      this.$store.dispatch("closeDialog", "Client");
-      setTimeout(() => {
-        this.emptyForm();
-      }, 300);
+      this.$router.push({name: "Client"})
+      this.emptyForm();
     },
 
-    //TODO: maybe remove it from the methods list as it is used by the component
     /**
      * emptyForm - Empty the form and removes the errors
      *
@@ -114,4 +109,5 @@ export default {
 </script>
 
 <style lang="scss">
+
 </style>

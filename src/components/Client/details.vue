@@ -3,14 +3,11 @@
   <v-card v-if="client">
     <v-card-title>
       <span class="headline">Client Details</span>
-      <v-btn color="blue darken-1" flat @click.native=""><v-icon>edit</v-icon>Edit</v-btn>
+      <v-btn color="blue darken-1" flat @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
     </v-card-title>
     <v-card-text>
       <detailsGenerator :schema="schema" :model="client"/>
     </v-card-text>
-    <v-card-actions>
-      <v-btn color="red darken-1" flat @click.native="close">Close</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -37,7 +34,10 @@ export default {
   },
   methods: {
     close() {
-      this.$store.dispatch("closeDialog", "Client");
+      this.$router.push({name: "Client"});
+    },
+    edit() {
+      this.$router.push({name: "clientUpdate", params: { clientId: this.clientId}});
     }
   }
 }

@@ -34,23 +34,32 @@
 <script>
 import add from './add';
 import details from './details';
+import edit from "./edit";
 import { mainHeaders } from '../../constants/client';
 
 export default {
   name: "client-main",
   components: {
-    "client-add":add,
-    "client-details": details
+    "client-add": add,
   },
   data() {
     return {
       headers: mainHeaders,
       loading: true,
+      open: false,
+      selectedClient: ""
     }
   },
   computed: {
     items() {
       return this.$store.state.clients.clientList;
+    }
+  },
+  watch: {
+    open(value) {
+      if(value === false) {
+        this.selectedClient = "";
+      }
     }
   },
   methods: {
@@ -64,13 +73,13 @@ export default {
         });
     },
     openDialogAdd(){
-      this.$store.dispatch("openDialog", {route: "addClient"});
+        this.$router.push({ name: 'clientAdd'});
     },
     details(id) {
-      this.$store.dispatch("openDialog", {route: "clientDetails", params: {clientId: id}});
+      this.$router.push({ name: 'clientDetails', params: { clientId: id }});
     },
     edit(id) {
-      this.$store.dispatch("openDialog", {route: "clientUpdate", params: {clientId: id}});
+      this.$router.push({ name: 'clientUpdate', params: { clientId: id }});
     }
   },
   created: function() {
