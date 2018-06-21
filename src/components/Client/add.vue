@@ -49,7 +49,6 @@ export default {
      */
     createClient() {
       if (this.$refs.form.validate()) {
-        this.$store.dispatch("closeDialog");
 
         // In order to assign the true values instead of all the extra things needed
         // to track changes

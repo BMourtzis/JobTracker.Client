@@ -1,11 +1,10 @@
 <template>
-<!-- <v-dialog v-model="open" max-width="50vw"> -->
   <v-card v-if="client">
-    <v-card-title>
-      <span class="headline">Client Details</span>
-      <v-btn color="blue darken-1" flat @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
+    <v-card-title class="details-title-card">
+      <v-btn color="blue darken-1" flat @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
+      <v-btn class="edit-button" flat color="orange lighten-1" @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
     </v-card-title>
-    <v-card-text>
+    <v-card-text class="details-text-card">
       <detailsGenerator :schema="schema" :model="client"/>
     </v-card-text>
   </v-card>
@@ -38,11 +37,18 @@ export default {
     },
     edit() {
       this.$router.push({name: "clientUpdate", params: { clientId: this.clientId}});
+    },
+    back() {
+      this.$router.back();
     }
   }
 }
 </script>
 
 <style lang="scss">
+
+.edit-button {
+  margin-left: 5vw;
+}
 
 </style>

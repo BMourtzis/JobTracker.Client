@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       headers: mainHeaders,
-      loading: true,
+      loading: false,
       open: false,
       selectedClient: ""
     }
@@ -84,10 +84,7 @@ export default {
     delete(id) {
 
     }
-  },
-  created: function() {
-    this.getClients();
-  },
+  }
 }
 </script>
 

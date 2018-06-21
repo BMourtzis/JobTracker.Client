@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <span class="headline">Update Client</span>
+      <v-btn color="blue darken-1" flat @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
     </v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form">
@@ -30,29 +30,31 @@ export default {
     //NOTE: Used to copy object, else it will mutate the state of the store
     return {
       valid: true,
-      schema: clientSchema
-    }
-  },
-  computed: {
-    client() {
-      return Object.assign({}, this.$store.getters.findClient(this.clientId));
+      schema: clientSchema,
+      client: this.$store.getters.findClient(this.clientId)
     }
   },
   methods: {
     updateClient() {
-      return "";
+      if (this.$refs.form.validate()) {
+        // In order to assign the true values instead of all the extra things needed
+        // to track changes
+        let newClient = {};
+        Object.assign(newClient, this.client);
+
+        this.$store.dispatch("updateClient", newClient).then(() => {
+          this.$router.push({name: "Client"});
+        });
+      }
     },
-    cancel() {
-      this.$router.push({name: "Client"});
+    back() {
+      this.$router.back();
       this.resetForm();
     },
     resetForm() {
-      console.log(this.client.businessName);
       this.client = Object.assign({}, this.$store.getters.findClient(this.clientId));
-      console.log(this.$refs);
       //HACK: I'm pushing the reset to the end of the process
       setTimeout(() => {
-        console.log(this.$refs);
         this.$refs.form.reset();
       }, 0);
     }

@@ -24,7 +24,6 @@ import loader from './components/shared/loader';
 import dialog from "./components/shared/dialog";
 import { navigationList } from './constants/navigation';
 
-
 export default {
   // TODO: vuetify load icons to use offline
   name: 'App',
@@ -37,6 +36,9 @@ export default {
     title() {
       return navigationList[this.$store.state.app.main].title;
     }
+  }, 
+  created: function() {
+    this.$store.dispatch("loadClients");
   }
 }
 </script>

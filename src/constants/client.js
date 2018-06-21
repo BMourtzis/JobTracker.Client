@@ -49,6 +49,6 @@ export const clientDetailsSchema = [
   {type: DIVIDER},
   {type: SUBHEADER, label: "Contacts"},
   {type: FIELD, items: [{name: "fullname", label: "Name"}]},
-  {type: FIELD, items: [{name: "email", label: "Email"}, {name: "phone", label: "Phone"}]},
+  {type: FIELD, items: [{name: "email", label: "Email"}, {name: "primaryPhone", label: "Phone"}]},
   {type: SUBLIST, label: "Additional Contacts", items: [{name: "name", label: "Name"}, {name: "phone", label: "Phone"}]}
 ];
