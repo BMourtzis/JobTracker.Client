@@ -34,7 +34,7 @@ const actions = {
           address: "498 somewhere st",
           email: "vasi@me.com",
           primaryPhone: "0123456789",
-          contancts: [{ name: "secondary", phone: "0123456789" }]
+          contacts: [{ name: "Mobile", phone: "0123456789" }]
         }];
 
         resolve({ data: clients });
