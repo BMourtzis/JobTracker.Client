@@ -28,7 +28,6 @@
 import {FIELD, DIVIDER, SUBHEADER, SUBLIST} from "../../constants/detailsGenerator";
 
 export default {
-  //TODO: check if sublist work correctly
   props: [
     "schema",
     "model"

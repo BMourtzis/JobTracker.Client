@@ -1,13 +1,16 @@
 <template>
+<div>
+  <v-btn color="primary" class="mb-2 left" @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
   <v-card v-if="client">
-    <v-card-title class="details-title-card">
-      <v-btn color="blue darken-1" flat @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
-      <v-btn class="edit-button" flat color="orange lighten-1" @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
+    <v-card-title>
+      <span class="headline">Client Details</span>
+      <v-btn color="blue darken-1" flat @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
     </v-card-title>
     <v-card-text class="details-text-card">
       <detailsGenerator :schema="schema" :model="client"/>
     </v-card-text>
   </v-card>
+</div>
 </template>
 
 <script>
