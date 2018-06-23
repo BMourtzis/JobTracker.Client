@@ -2,6 +2,7 @@ import {
   getClients,
   newClient
 } from '../../api/clients';
+import { testClients } from "../../constants/testData";
 
 const state = {
   lastFetchTimestamp: 0,
@@ -22,20 +23,9 @@ const actions = {
   loadClients(context) {
     let clientCall;
 
-    if (process.env.NODE_ENV === "development" && state.lastFetchTimestamp === 0) {
+    if (process.env.NODE_ENV === "local" && state.lastFetchTimestamp === 0) {
       clientCall = new Promise((resolve, reject) => {
-        let clients = [{
-          id: "me",
-          firstName: "Vasileios",
-          lastName: "Mourtzis",
-          fullname: "Vasileios Mourtzis",
-          businessName: "Team Vasi",
-          invoicePrefix: "TVPL",
-          address: "498 somewhere st",
-          email: "vasi@me.com",
-          primaryPhone: "0123456789",
-          contacts: [{ name: "Mobile", phone: "0123456789" }]
-        }];
+        let clients = testClients;
 
         resolve({ data: clients });
       });
