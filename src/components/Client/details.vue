@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-layout row wrap>
     <v-flex xs12 sm12 md12>
       <v-btn color="primary" class="mb-2 left" @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
@@ -7,7 +8,8 @@
       <v-card>
         <v-card-title>
           <span class="headline">Client Details</span>
-          <v-btn color="blue darken-1" flat @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
+          <v-btn id="edit-button" color="success" flat @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
+          <v-btn color="error" flat @click.native="confirmDelete"><v-icon>delete</v-icon>Delete</v-btn>
         </v-card-title>
         <v-card-text>
           <detailsGenerator :schema="schema" :model="client"/>
@@ -15,6 +17,18 @@
       </v-card>
     </v-flex>
   </v-layout>
+  <v-dialog v-model="confimDeleteDialog" max-width="50vw">
+    <v-card>
+      <v-card-title>
+        <span class="headline">Are you sure you want to delete {{client.businessName}}?</span>
+      </v-card-title>
+      <v-card-actions>
+        <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>delete</v-icon>Yes, Delete</v-btn>
+        <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">No</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</div>
 </template>
 
 <script>
@@ -28,7 +42,8 @@ export default {
   props: ["clientId"],
   data() {
     return {
-      schema: clientDetailsSchema
+      schema: clientDetailsSchema,
+      confimDeleteDialog: false
     };
   },
   computed: {
@@ -37,9 +52,6 @@ export default {
     }
   },
   methods: {
-    close() {
-      this.$router.push({ name: "Client" });
-    },
     edit() {
       this.$router.push({
         name: "clientUpdate",
@@ -48,20 +60,26 @@ export default {
     },
     back() {
       this.$router.back();
+    },
+    confirmDelete() {
+      this.confimDeleteDialog = true;
+    },
+    closeConfirmDelete() {
+      this.confimDeleteDialog = false;
+    },
+    deleteClient() {
+      this.confimDeleteDialog = false;
+      this.$store.dispatch("deleteClient", this.clientId);
+      this.$router.push({ name: "Client" });
     }
   }
 };
 </script>
 
 <style lang="scss">
-.backButton {
-  clear: both;
-  width: 100%;
+
+#edit-button {
+  margin-left: 3vw;
 }
 
-.title {
-}
-
-.content {
-}
 </style>
