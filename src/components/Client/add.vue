@@ -10,7 +10,6 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
       <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
     </v-card-actions>
   </v-card>
@@ -50,7 +49,6 @@ export default {
      */
     createClient() {
       if (this.$refs.form.validate()) {
-        this.$store.dispatch("closeDialog");
 
         // In order to assign the true values instead of all the extra things needed
         // to track changes
@@ -62,9 +60,7 @@ export default {
           .dispatch("addClient", newClient)
           .then(
             () => {
-              setTimeout(() => {
-                this.emptyForm();
-              }, 300);
+              this.emptyForm();
             },
             err => {
               this.dialog = true;
@@ -82,13 +78,10 @@ export default {
      * @return {Null}  null
      */
     cancel() {
-      this.$store.dispatch("closeDialog", "Client");
-      setTimeout(() => {
-        this.emptyForm();
-      }, 300);
+      this.$router.push({name: "Client"})
+      this.emptyForm();
     },
 
-    //TODO: maybe remove it from the methods list as it is used by the component
     /**
      * emptyForm - Empty the form and removes the errors
      *
@@ -114,4 +107,5 @@ export default {
 </script>
 
 <style lang="scss">
+
 </style>

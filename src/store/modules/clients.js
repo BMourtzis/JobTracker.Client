@@ -13,7 +13,7 @@ const getters = {
     let client = state.clientList.find((client) => {
       return client.id === id;
     });
-    
+
     return Object.assign({}, client);
   }
 };
@@ -22,21 +22,22 @@ const actions = {
   loadClients(context) {
     let clientCall;
 
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "development" && state.lastFetchTimestamp === 0) {
       clientCall = new Promise((resolve, reject) => {
         let clients = [{
           id: "me",
           firstName: "Vasileios",
           lastName: "Mourtzis",
+          fullname: "Vasileios Mourtzis",
           businessName: "Team Vasi",
           invoicePrefix: "TVPL",
           address: "498 somewhere st",
           email: "vasi@me.com",
           primaryPhone: "0123456789",
-          contancts: [{name: "secondary", phone: "0123456789"}]
+          contacts: [{ name: "Mobile", phone: "0123456789" }]
         }];
 
-        resolve({data: clients});
+        resolve({ data: clients });
       });
     }
     else {
@@ -56,6 +57,14 @@ const actions = {
     });
 
     return clientCall;
+  },
+  updateClient(context, client) {
+    //Call the server
+    context.commit("updateClient", client);
+  },
+  deleteClient(context, id) {
+    //Call the server
+    context.commit("deleteClient", id);
   }
 };
 
@@ -81,6 +90,22 @@ const mutations = {
       }
     });
     state.clientList.push(client);
+  },
+  updateClient(state, client) {
+    for (let item in state.clientList) {
+      if (state.clientList[item].id === client.id) {
+        state.clientList[item] = client;
+        break;
+      }
+    }
+  },
+  deleteClient(state, id) {
+    for(let item in state.clientList) {
+      if(state.clientList[item].id === id) {
+        state.clientList.splice(item, 1);
+        break;
+      }
+    }
   }
 };
 

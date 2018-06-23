@@ -1,65 +1,74 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <span class="headline">Update Client</span>
-    </v-card-title>
-    <v-card-text>
-      <v-form v-model="valid" ref="form">
-        <form-generator :schema="schema" :model="client"/>
-      </v-form>
-    </v-card-text>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn color="red darken-1" flat @click.native="cancel">Cancel</v-btn>
-      <v-btn color="blue darken-1" flat @click.native="updateClient">Update</v-btn>
-    </v-card-actions>
-  </v-card>
+<v-layout row wrap>
+  <v-flex xs12 sm12 md12>
+    <v-btn color="primary" class="mb-2 left" @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
+  </v-flex>
+  <v-flex xs12 sm12 md12>
+    <v-card>
+      <v-card-title>
+        <span class="headline">Edit Client</span>
+      </v-card-title>
+      <v-card-text>
+        <v-form v-model="valid" ref="form">
+          <form-generator :schema="schema" :model="client"/>
+        </v-form>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="blue darken-1" flat @click.native="updateClient">Update</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-flex>
+</v-layout>
 </template>
 
 <script>
 import formGenerator from "../shared/formGenerator";
-import {clientSchema} from "../../constants/client";
+import { clientSchema } from "../../constants/client";
 
 export default {
   components: {
-    "formGenerator": formGenerator
+    formGenerator: formGenerator
   },
-  props: [
-    "clientId"
-  ],
+  props: ["clientId"],
   data() {
     //NOTE: Used to copy object, else it will mutate the state of the store
-    let client = Object.assign({}, this.$store.getters.findClient(this.clientId));
     return {
       valid: true,
-      client,
-      schema: clientSchema
-    }
+      schema: clientSchema,
+      client: this.$store.getters.findClient(this.clientId)
+    };
   },
   methods: {
     updateClient() {
-      return "";
+      if (this.$refs.form.validate()) {
+        // In order to assign the true values instead of all the extra things needed
+        // to track changes
+        let newClient = {};
+        Object.assign(newClient, this.client);
+
+        this.$store.dispatch("updateClient", newClient).then(() => {
+          this.$router.push({ name: "Client" });
+        });
+      }
     },
-    cancel() {
-      this.$store.dispatch("closeDialog", "Client");
-      setTimeout(() => {
-        this.resetForm();
-      }, 300);
+    back() {
+      this.$router.back();
+      this.resetForm();
     },
     resetForm() {
-      console.log(this.client.businessName);
-      this.client = Object.assign({}, this.$store.getters.findClient(this.clientId));
-      console.log(this.$refs);
+      this.client = Object.assign(
+        {},
+        this.$store.getters.findClient(this.clientId)
+      );
       //HACK: I'm pushing the reset to the end of the process
       setTimeout(() => {
-        console.log(this.$refs);
         this.$refs.form.reset();
       }, 0);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
-
 </style>

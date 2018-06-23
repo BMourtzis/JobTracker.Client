@@ -6,7 +6,7 @@
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
-    <v-content  class="main-container">
+    <v-content class="main-container">
       <v-container fluid>
         <router-view />
       </v-container>
@@ -24,7 +24,6 @@ import loader from './components/shared/loader';
 import dialog from "./components/shared/dialog";
 import { navigationList } from './constants/navigation';
 
-
 export default {
   // TODO: vuetify load icons to use offline
   name: 'App',
@@ -37,6 +36,9 @@ export default {
     title() {
       return navigationList[this.$store.state.app.main].title;
     }
+  }, 
+  created: function() {
+    this.$store.dispatch("loadClients");
   }
 }
 </script>
@@ -53,5 +55,6 @@ export default {
 
 .main-container{
   padding-top: 0 !important;
+  background: #f5f5f5;
 }
 </style>

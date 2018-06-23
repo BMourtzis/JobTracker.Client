@@ -1,5 +1,5 @@
 <template>
-<v-navigation-drawer app>
+<v-navigation-drawer app id="nav-bar">
   <v-toolbar flat dark color="secondary">
     <v-toolbar-title>Job Tracker</v-toolbar-title>
   </v-toolbar>
@@ -13,7 +13,7 @@
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
-  <v-footer>
+  <v-footer color="white">
     Version: 2.0
   </v-footer>
 </v-navigation-drawer>
@@ -38,6 +38,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss">
+#nav-bar {
+  background: white;
+}
 </style>
