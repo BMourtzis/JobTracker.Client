@@ -109,6 +109,10 @@ export default {
       this.$store.dispatch("deleteClient", this.deleteId);
       this.deleteId = "";
     }
+    // changeLang() {
+    //   this.$i18n.locale = "gr"
+    //   this.$store.dispatch("changeLanguage", "gr");
+    // }
   }
 }
 </script>
