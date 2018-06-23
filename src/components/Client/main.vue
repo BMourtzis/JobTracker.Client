@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn color="primary" slot="activator" class="mb-2 left" @click.native="openDialogAdd">
+    <v-btn color="primary" slot="activator" class="mb-2 left" @click.native="addClient">
       <v-icon>add</v-icon>New Client
     </v-btn>
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
@@ -16,7 +16,7 @@
           <v-btn icon class="mx-0" @click.native="edit(props.item.id)">
             <v-icon color="teal">edit</v-icon>
           </v-btn>
-          <v-btn icon class="mx-0" @click.native="delete(props.item.id)">
+          <v-btn icon class="mx-0" @click.native="confirmDelete(props.item.id)">
             <v-icon color="pink">delete</v-icon>
           </v-btn>
         </td>
@@ -28,6 +28,17 @@
           No Clients
         </template>
     </v-data-table>
+    <v-dialog v-model="confimDeleteDialog" max-width="50vw">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Are you sure you want to delete {{getDeleteName}}?</span>
+        </v-card-title>
+        <v-card-actions>
+          <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>delete</v-icon>Yes, Delete</v-btn>
+          <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">No</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -46,20 +57,24 @@ export default {
     return {
       headers: mainHeaders,
       loading: false,
-      open: false,
-      selectedClient: ""
+      confimDeleteDialog: false,
+      deleteId: ""
     }
   },
   computed: {
     items() {
       return this.$store.state.clients.clientList;
-    }
-  },
-  watch: {
-    open(value) {
-      if(value === false) {
-        this.selectedClient = "";
+    },
+    getDeleteName() {
+      if(this.deleteId === "") {
+        return "";
       }
+
+      let client = this.$store.state.clients.clientList.find((el) =>{
+        return el.id === this.deleteId;
+      });
+
+      return client.businessName;
     }
   },
   methods: {
@@ -72,7 +87,7 @@ export default {
           this.loading = false;
         });
     },
-    openDialogAdd(){
+    addClient(){
         this.$router.push({ name: 'clientAdd'});
     },
     details(id) {
@@ -81,8 +96,18 @@ export default {
     edit(id) {
       this.$router.push({ name: 'clientUpdate', params: { clientId: id }});
     },
-    delete(id) {
-
+    confirmDelete(id) {
+      this.deleteId = id;
+      this.confimDeleteDialog = true;
+    },
+    closeConfirmDelete() {
+      this.deleteId = "";
+      this.confimDeleteDialog = false;
+    },
+    deleteClient() {
+      this.confimDeleteDialog = false;
+      this.$store.dispatch("deleteClient", this.deleteId);
+      this.deleteId = "";
     }
   }
 }

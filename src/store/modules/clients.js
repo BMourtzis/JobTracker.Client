@@ -59,7 +59,12 @@ const actions = {
     return clientCall;
   },
   updateClient(context, client) {
+    //Call the server
     context.commit("updateClient", client);
+  },
+  deleteClient(context, id) {
+    //Call the server
+    context.commit("deleteClient", id);
   }
 };
 
@@ -90,6 +95,14 @@ const mutations = {
     for (let item in state.clientList) {
       if (state.clientList[item].id === client.id) {
         state.clientList[item] = client;
+        break;
+      }
+    }
+  },
+  deleteClient(state, id) {
+    for(let item in state.clientList) {
+      if(state.clientList[item].id === id) {
+        state.clientList.splice(item, 1);
         break;
       }
     }
