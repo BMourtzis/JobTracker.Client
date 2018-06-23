@@ -7,7 +7,7 @@
     <v-flex xs12 sm12 md12>
       <v-card>
         <v-card-title>
-          <span class="headline">Client Details</span>
+          <span class="headline">{{$t("message.client.detailsHeading")}}</span>
           <v-btn id="edit-button" color="success" flat @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
           <v-btn color="error" flat @click.native="confirmDelete"><v-icon>delete</v-icon>Delete</v-btn>
         </v-card-title>
