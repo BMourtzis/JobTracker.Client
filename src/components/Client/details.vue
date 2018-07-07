@@ -2,14 +2,16 @@
 <div>
   <v-layout row wrap>
     <v-flex xs12 sm12 md12>
-      <v-btn color="primary" class="mb-2 left" @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
+      <v-btn color="primary" class="mb-2 left" @click.native="back">
+        <v-icon>chevron_left</v-icon>{{$t("message.general.backButton")}}
+      </v-btn>
     </v-flex>
     <v-flex xs12 sm12 md12>
       <v-card>
         <v-card-title>
           <span class="headline">{{$t("message.client.detailsHeading")}}</span>
-          <v-btn id="edit-button" color="success" flat @click.native="edit"><v-icon>edit</v-icon>Edit</v-btn>
-          <v-btn color="error" flat @click.native="confirmDelete"><v-icon>delete</v-icon>Delete</v-btn>
+          <v-btn id="edit-button" color="success" flat @click.native="edit"><v-icon>edit</v-icon>{{$t("message.general.editButton")}}</v-btn>
+          <v-btn color="error" flat @click.native="confirmDelete"><v-icon>delete</v-icon>{{$t("message.general.deleteButton")}}</v-btn>
         </v-card-title>
         <v-card-text>
           <detailsGenerator :schema="schema" :model="client"/>
@@ -20,11 +22,11 @@
   <v-dialog v-model="confimDeleteDialog" max-width="50vw">
     <v-card>
       <v-card-title>
-        <span class="headline">Are you sure you want to delete {{client.businessName}}?</span>
+        <span class="headline">{{$t("message.general.deleteMessage", {businessName: client.businessName})}}</span>
       </v-card-title>
       <v-card-actions>
-        <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>delete</v-icon>Yes, Delete</v-btn>
-        <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">No</v-btn>
+        <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>delete</v-icon>{{$t("message.general.yesDelete")}}</v-btn>
+        <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">{{$t("message.general.no")}}</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

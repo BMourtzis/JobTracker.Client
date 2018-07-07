@@ -9,12 +9,12 @@
         <v-icon>{{ item.icon }}</v-icon>
       </v-list-tile-avatar>
       <v-list-tile-content>
-        <v-list-tile-title v-html="item.title"></v-list-tile-title>
+        <v-list-tile-title v-html="$t(item.title)"></v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
   <v-footer color="white">
-    Version: 2.0
+    {{$t("message.settings.labelVersion")}}: 2.0
   </v-footer>
 </v-navigation-drawer>
 </template>

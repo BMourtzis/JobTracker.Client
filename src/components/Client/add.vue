@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <span class="headline">New Client</span>
+      <span class="headline">{{$t("message.client.new")}}</span>
     </v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form">
