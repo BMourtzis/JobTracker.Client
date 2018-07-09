@@ -26,7 +26,7 @@ export const gr = {
             edit: "Επεξεργασία Πελάτη",
             labelFullName: "Ονοματεπώνυμο",
             labelBusinessName: "Όνομα Εταιρείας",
-            labelInvoicePrefix: "Αρχικά Τιμολογίου",
+            labelInvoicePrefix: "Κωδικός Τιμολογίου",
             labelActions: "Ενέργειες",
             labelAddress: "Διεύθυνση",
             labelParent: "Μητρική Εταιρεία",
