@@ -16,7 +16,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
+      <v-btn color="blue darken-1" flat @click.native="createClient">{{$t("message.general.createButton")}}</v-btn>
     </v-card-actions>
   </v-card>
 </v-layout>

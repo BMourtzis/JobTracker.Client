@@ -15,7 +15,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" flat @click.native="updateClient">Update</v-btn>
+        <v-btn color="blue darken-1" flat @click.native="updateClient">{{$t("message.general.updateButton")}}</v-btn>
       </v-card-actions>
     </v-card>
   </v-flex>

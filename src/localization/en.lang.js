@@ -4,6 +4,8 @@ export const en = {
             editButton: "Edit",
             deleteButton: "Delete",
             backButton: "Back",
+            updateButton: "Update",
+            createButton: "Create",
             yes: "Yes",
             no: "No",
             deleteMessage: "Are you sure you want to delete {{businessName}}?",

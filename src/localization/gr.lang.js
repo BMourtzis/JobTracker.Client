@@ -4,10 +4,12 @@ export const gr = {
             editButton: "Επεξεργασία",
             deleteButton: "Διαγραφή",
             backButton: "Πίσω",
+            updateButton: "Ανανέωση",
+            createButton: "Δημιουργία",
             yes: "Ναι",
             no: "Όχι",
             deleteMessage: "Θέλετε να διαγράψετε το {businessName};",
-            yesDelete: "Ναι, διαγραφή"
+            yesDelete: "Ναι, διαγραφή",
         },
         home: {
             name: "Αρχική"
