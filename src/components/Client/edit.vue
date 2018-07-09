@@ -1,12 +1,12 @@
 <template>
 <v-layout row wrap>
   <v-flex xs12 sm12 md12>
-    <v-btn color="primary" class="mb-2 left" @click.native="back"><v-icon>chevron_left</v-icon>Back</v-btn>
+    <v-btn color="primary" class="mb-2 left" @click.native="back"><v-icon>chevron_left</v-icon>{{$t("message.general.backButton")}}</v-btn>
   </v-flex>
   <v-flex xs12 sm12 md12>
     <v-card>
       <v-card-title>
-        <span class="headline">Edit Client</span>
+        <span class="headline">{{$t("message.client.edit")}}</span>
       </v-card-title>
       <v-card-text>
         <v-form v-model="valid" ref="form">
@@ -32,7 +32,6 @@ export default {
   },
   props: ["clientId"],
   data() {
-    //NOTE: Used to copy object, else it will mutate the state of the store
     return {
       valid: true,
       schema: clientSchema,

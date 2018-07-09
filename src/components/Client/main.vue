@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-btn color="primary" slot="activator" class="mb-2 left" @click.native="addClient">
-      <v-icon>add</v-icon>New Client
+      <v-icon>add</v-icon>{{$t("message.client.addClientBtn")}}
     </v-btn>
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
@@ -31,11 +31,11 @@
     <v-dialog v-model="confimDeleteDialog" max-width="50vw">
       <v-card>
         <v-card-title>
-          <span class="headline">Are you sure you want to delete {{getDeleteName}}?</span>
+          <span class="headline">{{$t("message.general.deleteMessage", {businessName: getDeleteName})}}</span>
         </v-card-title>
         <v-card-actions>
-          <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>delete</v-icon>Yes, Delete</v-btn>
-          <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">No</v-btn>
+          <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>delete</v-icon>{{$t("message.general.yesDelete")}}</v-btn>
+          <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">{{$t("message.general.no")}}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -109,6 +109,10 @@ export default {
       this.$store.dispatch("deleteClient", this.deleteId);
       this.deleteId = "";
     }
+    // changeLang() {
+    //   this.$i18n.locale = "gr"
+    //   this.$store.dispatch("changeLanguage", "gr");
+    // }
   }
 }
 </script>

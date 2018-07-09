@@ -5,7 +5,7 @@ import App from './App';
 import Vuetify from 'vuetify';
 import router from './router';
 import store from './store';
-
+import { i18n } from './localization';
 import 'vuetify/dist/vuetify.min.css';
 
 Vue.config.productionTip = false;
@@ -27,6 +27,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   components: { App },
   template: '<App/>'
 });

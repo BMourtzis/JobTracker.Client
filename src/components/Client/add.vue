@@ -1,7 +1,13 @@
 <template>
+  <v-layout row wrap>
+    <v-flex xs12 sm12 md12>
+      <v-btn color="primary" class="mb-2 left" @click.native="back">
+        <v-icon>chevron_left</v-icon>{{$t("message.general.backButton")}}
+      </v-btn>
+    </v-flex>
   <v-card>
     <v-card-title>
-      <span class="headline">New Client</span>
+      <span class="headline">{{$t("message.client.new")}}</span>
     </v-card-title>
     <v-card-text>
       <v-form v-model="valid" ref="form">
@@ -13,6 +19,7 @@
       <v-btn color="blue darken-1" flat @click.native="createClient">Create</v-btn>
     </v-card-actions>
   </v-card>
+</v-layout>
 </template>
 
 <script>
@@ -101,6 +108,9 @@ export default {
       setTimeout(() => {
         this.$refs.form.reset();
       }, 0);
+    },
+    back() {
+      this.$router.back();
     }
   }
 };
