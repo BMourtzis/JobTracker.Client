@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-btn color="primary" slot="activator" class="mb-2 left" @click.native="addClient">
-      <v-icon>add</v-icon>{{$t("message.client.addClientBtn")}}
+      <v-icon left>fa-plus</v-icon>{{$t("message.client.addClientBtn")}}
     </v-btn>
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
@@ -11,13 +11,13 @@
         <td>{{ props.item.invoicePrefix }}</td>
         <td class="justify-center layout px-0">
           <v-btn icon class="mx-0" @click.native="details(props.item.id)">
-            <v-icon color="orange">assignment</v-icon>
+            <v-icon color="orange">fa-file-alt</v-icon>
           </v-btn>
           <v-btn icon class="mx-0" @click.native="edit(props.item.id)">
-            <v-icon color="teal">edit</v-icon>
+            <v-icon color="teal">fa-edit</v-icon>
           </v-btn>
           <v-btn icon class="mx-0" @click.native="confirmDelete(props.item.id)">
-            <v-icon color="pink">delete</v-icon>
+            <v-icon color="pink">fa-trash</v-icon>
           </v-btn>
         </td>
         </template>
@@ -34,7 +34,7 @@
           <span class="headline">{{$t("message.general.deleteMessage", {businessName: getDeleteName})}}</span>
         </v-card-title>
         <v-card-actions>
-          <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>delete</v-icon>{{$t("message.general.yesDelete")}}</v-btn>
+          <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>fa-trash</v-icon>{{$t("message.general.yesDelete")}}</v-btn>
           <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">{{$t("message.general.no")}}</v-btn>
         </v-card-actions>
       </v-card>

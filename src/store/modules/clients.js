@@ -1,6 +1,7 @@
 import {
   getClients,
-  newClient
+  newClient,
+  updateClient
 } from '../../api/clients';
 import { testClients } from "../../constants/testData";
 
@@ -49,8 +50,12 @@ const actions = {
     return clientCall;
   },
   updateClient(context, client) {
-    //Call the server
-    context.commit("updateClient", client);
+    let clientCall = updateClient(client).then((data) => {
+      console.log(data);
+      context.commit("updateClient", data.data);
+    });
+    
+    return clientCall;
   },
   deleteClient(context, id) {
     //Call the server
