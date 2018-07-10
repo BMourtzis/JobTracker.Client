@@ -13,6 +13,7 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuetify, {
   iconfont: 'fa',
+  icons: CUSTOM_ICONS,
   theme: {
     primary: "#3949AB",
     secondary: "#283593",
@@ -33,3 +34,7 @@ new Vue({
   components: { App },
   template: '<App/>'
 });
+
+const CUSTOM_ICONS = {
+  // "arrow_upward": "fas fas-arrow-up"
+};

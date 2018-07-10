@@ -2,42 +2,42 @@
 export const navigationList = [
   {
     title: "message.home.name",
-    icon: "home",
+    icon: "fa-home",
     path: "/"
   },
   {
     title: "message.jobs.name",
-    icon: "work",
+    icon: "fa-briefcase",
     path: "/job"
   },
   {
     title: "message.jobTemplates.name",
-    icon: "inbox",
+    icon: "fa-inbox",
     path: "/templates"
   },
   {
     title: "message.client.name",
-    icon: "account_circle",
+    icon: "fa-address-book",
     path: "/client"
   },
   {
     title: "message.invoices.name",
-    icon: "insert_drive_file",
+    icon: "fa-file-invoice",
     path: "/invoice"
   },
   {
     title: "message.calendar.name",
-    icon: "date_range",
+    icon: "fa-calendar-alt",
     path: "/calendar"
   },
   {
     title: "message.finances.name",
-    icon: "euro_symbol",
+    icon: "fa-euro-sign",
     path: "/finances"
   },
   {
     title: "message.settings.name",
-    icon: "settings",
+    icon: "fa-cog",
     path: "/settings"
   }
 ];

@@ -3,7 +3,9 @@
   <v-app>
     <nav-menu/>
     <v-toolbar app dark color="primary">
-      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-side-icon>
+        <v-icon>fa-bars</v-icon>
+      </v-toolbar-side-icon>
       <v-toolbar-title>{{$t(title)}}</v-toolbar-title>
     </v-toolbar>
     <v-content class="main-container">
@@ -43,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -56,5 +58,10 @@ export default {
 .main-container{
   padding-top: 0 !important;
   background: #f5f5f5;
+}
+
+.fa {
+  padding-bottom: 2%;
+  font-size: 22px;
 }
 </style>
