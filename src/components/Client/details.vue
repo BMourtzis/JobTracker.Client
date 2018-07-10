@@ -3,7 +3,7 @@
   <v-layout row wrap>
     <v-flex xs12 sm12 md12>
       <v-btn color="primary" class="mb-2 left" @click.native="back">
-        <v-icon>fa-angle-left</v-icon>{{$t("message.general.backButton")}}
+        <v-icon left>fa-angle-left</v-icon>{{$t("message.general.backButton")}}
       </v-btn>
     </v-flex>
     <v-flex xs12 sm12 md12>

@@ -1,8 +1,7 @@
 <template>
   <div>
     <v-btn color="primary" slot="activator" class="mb-2 left" @click.native="addClient">
-      <v-icon size="22" left>fa-plus</v-icon>{{$t("message.client.addClientBtn")}}
-      <!-- <v-icon>add</v-icon>{{$t("message.client.addClientBtn")}} -->
+      <v-icon left>fa-plus</v-icon>{{$t("message.client.addClientBtn")}}
     </v-btn>
     <v-data-table :headers="headers" :items="items" :loading="loading" hide-actions>
       <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear>
