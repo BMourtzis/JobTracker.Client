@@ -7,10 +7,12 @@ import router from './router';
 import store from './store';
 import { i18n } from './localization';
 import 'vuetify/dist/vuetify.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 Vue.config.productionTip = false;
 
 Vue.use(Vuetify, {
+  iconfont: 'fa',
   theme: {
     primary: "#3949AB",
     secondary: "#283593",

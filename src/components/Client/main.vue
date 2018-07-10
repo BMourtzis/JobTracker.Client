@@ -11,13 +11,13 @@
         <td>{{ props.item.invoicePrefix }}</td>
         <td class="justify-center layout px-0">
           <v-btn icon class="mx-0" @click.native="details(props.item.id)">
-            <v-icon color="orange">assignment</v-icon>
+            <v-icon color="orange">fa-file-alt</v-icon>
           </v-btn>
           <v-btn icon class="mx-0" @click.native="edit(props.item.id)">
-            <v-icon color="teal">edit</v-icon>
+            <v-icon color="teal">fa-edit</v-icon>
           </v-btn>
           <v-btn icon class="mx-0" @click.native="confirmDelete(props.item.id)">
-            <v-icon color="pink">delete</v-icon>
+            <v-icon color="pink">fa-trash</v-icon>
           </v-btn>
         </td>
         </template>
