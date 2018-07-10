@@ -2,30 +2,35 @@ import { caller } from "./caller";
 
 let controllerName = "/client";
 
-function getClients() {
+function get() {
   return caller.get(controllerName);
 }
 
-function newClient(client) {
+function create(client) {
   return caller.post(`${controllerName}/create`, client);
 }
 
-function updateClient(client) {
+function update(client) {
   return caller.put(`${controllerName}/${client.id}/update`, client);
 }
 
-function enableClient(id) {
+function remove(id) {
+  return caller.put(`${controllerName}/${id}/delete`);
+}
+
+function enable(id) {
   return caller.put(`${controllerName}/${id}/enable`);
 }
 
-function disableClient(id) {
+function disable(id) {
   return caller.put(`${controllerName}/${id}/disable`);
 }
 
 export {
-  getClients,
-  newClient,
-  updateClient,
-  enableClient,
-  disableClient
+  get,
+  create,
+  update,
+  remove,
+  enable,
+  disable
 };

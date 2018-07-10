@@ -75,6 +75,7 @@ export default {
           )
           .finally(() => {
             this.$store.dispatch("disableLoading");
+            this.$router.back();
           });
       }
     },

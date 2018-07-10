@@ -1,7 +1,10 @@
 import {
-  getClients,
-  newClient,
-  updateClient
+  get,
+  create,
+  update,
+  remove,
+  disable,
+  enable
 } from '../../api/clients';
 import { testClients } from "../../constants/testData";
 
@@ -32,7 +35,7 @@ const actions = {
       });
     }
     else {
-      clientCall = getClients();
+      clientCall = get();
     }
 
     clientCall.then((data) => {
@@ -43,23 +46,33 @@ const actions = {
     return clientCall;
   },
   addClient(context, client) {
-    let clientCall = newClient(client).then((data) => {
+    let clientCall = create(client).then((data) => {
       context.commit("newClient", data.data);
     });
 
     return clientCall;
   },
   updateClient(context, client) {
-    let clientCall = updateClient(client).then((data) => {
-      console.log(data);
+    let clientCall = update(client).then((data) => {
       context.commit("updateClient", data.data);
     });
     
     return clientCall;
   },
   deleteClient(context, id) {
-    //Call the server
-    context.commit("deleteClient", id);
+    remove(id).then(() => {
+      context.commit("deleteClient", id);
+    });
+  },
+  enableClient(context, id) {
+    enable(id).then(() => {
+
+    });
+  },
+  disableClient(context, id) {
+    disable(id).then(() => {
+
+    });
   }
 };
 

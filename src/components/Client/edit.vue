@@ -47,7 +47,7 @@ export default {
         Object.assign(newClient, this.client);
 
         this.$store.dispatch("updateClient", newClient).then(() => {
-          this.$router.push({ name: "Client" });
+          this.$router.back();
         });
       }
     },

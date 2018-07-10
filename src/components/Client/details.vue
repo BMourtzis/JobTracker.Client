@@ -10,8 +10,8 @@
       <v-card>
         <v-card-title>
           <span class="headline">{{$t("message.client.detailsHeading")}}</span>
-          <v-btn id="edit-button" color="success" flat @click.native="edit"><v-icon>fa-pen</v-icon>{{$t("message.general.editButton")}}</v-btn>
-          <v-btn color="error" flat @click.native="confirmDelete"><v-icon>fa-trash</v-icon>{{$t("message.general.deleteButton")}}</v-btn>
+          <v-btn id="edit-button" color="success" flat @click.native="edit"><v-icon left>fa-pen</v-icon>{{$t("message.general.editButton")}}</v-btn>
+          <v-btn color="error" flat @click.native="confirmDelete"><v-icon left>fa-trash</v-icon>{{$t("message.general.deleteButton")}}</v-btn>
         </v-card-title>
         <v-card-text>
           <detailsGenerator :schema="schema" :model="client"/>
@@ -25,7 +25,7 @@
         <span class="headline">{{$t("message.general.deleteMessage", {businessName: client.businessName})}}</span>
       </v-card-title>
       <v-card-actions>
-        <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon>fa-trash</v-icon>{{$t("message.general.yesDelete")}}</v-btn>
+        <v-btn color="error" class="mb-2 left" @click.native="deleteClient"><v-icon left>fa-trash</v-icon>{{$t("message.general.yesDelete")}}</v-btn>
         <v-btn class="mb-2 right" @click.native="closeConfirmDelete()">{{$t("message.general.no")}}</v-btn>
       </v-card-actions>
     </v-card>
