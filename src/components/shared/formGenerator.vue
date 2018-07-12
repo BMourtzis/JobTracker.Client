@@ -12,10 +12,12 @@
           <template v-else-if="field.type === LIST">
             <template v-for="(item, index) of model[field.name]">
               <v-flex v-for="(subfield, subIndex) of field.fields" :key="(index * 2) + subIndex" xs12 sm6 :md4="subfield.small" :md5="subfield.large">
-                <v-text-field v-model="model[field.name][index][subfield.name]"  :type="subfield.fieldType" :label="$t(subfield.label)" :rules="subfield.rules" :required="subfield.required? true: false" :counter="subfield.counter" :mask="subfield.mask"></v-text-field>
+                <v-text-field v-model="model[field.name][index][subfield.name]" :type="subfield.fieldType" :label="$t(subfield.label)" :rules="subfield.rules" :required="subfield.required" :counter="subfield.counter" :mask="subfield.mask"></v-text-field>
               </v-flex>
               <v-flex class="removeBtn">
-                <v-btn color="red darken-1" flat @click.native="removeItem(field.name, item)"><v-icon>fa-times</v-icon></v-btn>
+                <v-btn color="red darken-1" flat @click.native="removeItem(field.name, item)">
+                  <v-icon>fa-times</v-icon>
+                </v-btn>
               </v-flex>
             </template>
             <v-flex xs12 sm12 md2>
