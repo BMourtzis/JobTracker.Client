@@ -13,7 +13,6 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuetify, {
   iconfont: 'fa',
-  icons: CUSTOM_ICONS,
   theme: {
     primary: "#3949AB",
     secondary: "#283593",
