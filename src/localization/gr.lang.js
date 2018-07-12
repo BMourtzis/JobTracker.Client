@@ -6,6 +6,7 @@ export const gr = {
             backButton: "Πίσω",
             updateButton: "Ανανέωση",
             createButton: "Δημιουργία",
+            removeButton: "Διαγραφή",
             yes: "Ναι",
             no: "Όχι",
             deleteMessage: "Θέλετε να διαγράψετε το {businessName};",

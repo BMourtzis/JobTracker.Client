@@ -6,6 +6,7 @@ export const en = {
             backButton: "Back",
             updateButton: "Update",
             createButton: "Create",
+            removeButton: "Remove",
             yes: "Yes",
             no: "No",
             deleteMessage: "Are you sure you want to delete {{businessName}}?",
