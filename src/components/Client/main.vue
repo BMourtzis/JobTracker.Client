@@ -22,10 +22,10 @@
         </td>
         </template>
         <template v-if="loading" slot="no-data">
-          Loading Clients...
+          {{$t("message.client.labelLoading")}}
         </template>
         <template v-if="!loading" slot="no-data">
-          No Clients
+          {{$t("message.client.labelNone")}}
         </template>
     </v-data-table>
     <v-dialog v-model="confimDeleteDialog" max-width="50vw">
@@ -43,16 +43,10 @@
 </template>
 
 <script>
-import add from './add';
-import details from './details';
-import edit from "./edit";
 import { mainHeaders } from '../../constants/client';
 
 export default {
   name: "client-main",
-  components: {
-    "client-add": add,
-  },
   data() {
     return {
       headers: mainHeaders,

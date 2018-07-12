@@ -10,7 +10,7 @@ export const gr = {
             yes: "Ναι",
             no: "Όχι",
             deleteMessage: "Θέλετε να διαγράψετε το {businessName};",
-            yesDelete: "Ναι, διαγραφή",
+            yesDelete: "Ναι, διαγραφή"
         },
         home: {
             name: "Αρχική"
@@ -41,7 +41,9 @@ export const gr = {
             labelAdditionalContacts: "Πρόσθετες Επαφές",
             labelNewContact: "Νέα Επαφή",
             labelContactName: "Όνομα Επαφής",
-            labelPhone: "Τηλέφωνο"
+            labelPhone: "Τηλέφωνο",
+            labelNone: "Κανένας Πελάτης",
+            labelLoading: "Φόρτωση Πελατών..."
         },
         invoices: {
             name: "Τιμολόγια"
@@ -55,6 +57,20 @@ export const gr = {
         settings: {
             name: "Επιλογές",
             labelVersion: "Έκδοση"
+        },
+        $vuetify: {
+            dataIterator: {
+                rowsPerPageText: "Αντικείμενα ανά σελίδα:",
+                rowsPerPageAll: "Όλα",
+                pageText: "{0}-{1} από {2}",
+                noResultsText: "Δεν βρέθηκαν αντίστοιχα αρχεία",
+                nextPage: "Επόμενη σελίδα",
+                prevPage: "Προηγούμενη σελίδα"
+            },
+            dataTable: {
+                rowsPerPageText: "Σειρές ανά σελίδα:"
+            },
+            noDataText: "Δεν υπάρχουν διαθέσιμα δεδομένα"
         }
     }
 };

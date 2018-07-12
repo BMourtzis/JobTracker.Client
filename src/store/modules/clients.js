@@ -18,8 +18,20 @@ const getters = {
     let client = state.clientList.find((client) => {
       return client.id === id;
     });
+    
+    let cl;
+    if(client) {
+      cl = Object.assign({}, client);
+      let contacts = [];
+  
+      for(let cont of cl.contacts) {
+        
+        contacts.push(Object.assign({}, cont));
+      }
+      cl.contacts = contacts;
+    }
 
-    return Object.assign({}, client);
+    return cl;
   }
 };
 

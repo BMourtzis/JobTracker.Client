@@ -50,7 +50,17 @@ export default {
   },
   computed: {
     client() {
-      return this.$store.getters.findClient(this.clientId);
+      let c = this.$store.getters.findClient(this.clientId);
+      
+      if(c) {
+        c.primaryPhone = this.phoneFormat(c.primaryPhone);
+
+        for(let cont of c.contacts) {
+          cont.phone = this.phoneFormat(cont.phone)
+        }
+      }
+
+      return c;
     }
   },
   methods: {
@@ -59,6 +69,24 @@ export default {
         name: "clientUpdate",
         params: { clientId: this.clientId }
       });
+    },
+    phoneFormat(value) {
+      if(!value) {
+        return "";
+      }
+
+      let phone = "(";
+      for(let i = 0; i < 10; i++) {
+        phone += value[i];
+        if(i === 2) {
+          phone += ") ";
+        }
+        else if(i === 5) {
+          phone += " - ";
+        }
+      }
+
+      return phone;
     },
     back() {
       this.$router.back();

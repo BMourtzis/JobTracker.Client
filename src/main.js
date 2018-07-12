@@ -34,6 +34,6 @@ new Vue({
   template: '<App/>'
 });
 
-const CUSTOM_ICONS = {
+// const CUSTOM_ICONS = {
   
-};
+// };

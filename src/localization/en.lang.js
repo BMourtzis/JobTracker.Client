@@ -41,7 +41,9 @@ export const en = {
             labelAdditionalContacts: "Additional Contact",
             labelNewContact: "New Contact",
             labelContactName: "Contact Name",
-            labelPhone: "Phone"
+            labelPhone: "Phone",
+            labelNone: "No Clients",
+            labelLoading: "Loading Clients..."
         },
         invoices: {
             name: "Invoices"
@@ -55,6 +57,20 @@ export const en = {
         settings: {
             name: "Settings",
             labelVersion: "Version"
+        },
+        $vuetify: {
+            dataIterator: {
+                rowsPerPageText: "Items per page:",
+                rowsPerPageAll: "All",
+                pageText: "{0}-{1} of {2}",
+                noResultsText: "No matching records found",
+                nextPage: "Next page",
+                prevPage: "Previous page"
+              },
+              dataTable: {
+                rowsPerPageText: "Rows per page:"
+              },
+              noDataText: "No data available"
         }
     }
 };
