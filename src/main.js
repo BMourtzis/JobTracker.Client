@@ -36,5 +36,5 @@ new Vue({
 });
 
 const CUSTOM_ICONS = {
-  // "arrow_upward": "fas fas-arrow-up"
+  
 };
