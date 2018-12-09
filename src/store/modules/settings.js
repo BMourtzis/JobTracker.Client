@@ -1,7 +1,7 @@
 // Dependencies
 
 const state = {
-  lang: "gr"
+  lang: "en"
 };
 
 const getters = {

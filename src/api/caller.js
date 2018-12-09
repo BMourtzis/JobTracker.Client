@@ -2,7 +2,7 @@ import axios from 'axios';
 
 function getCaller() {
   let caller = axios.create({
-    baseURL: 'http://localhost:54043'
+    baseURL: 'http://localhost:54043/api/v1/'
   });
 
   return caller;
